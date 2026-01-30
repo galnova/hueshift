@@ -1,2 +1,0 @@
-# hueshift
-hueshift page
