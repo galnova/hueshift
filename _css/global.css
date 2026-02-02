@@ -1,68 +1,61 @@
-/* =========================
-   BACKGROUND + ANIMATION
-   ========================= */
-
 body.hs-dark {
   color: #f2f2f2;
   background-color: #0f0f12;
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
-
   background-image:
-    radial-gradient(
-      circle at 0% 0%,
-      rgba(255, 20, 40, 0.88) 0%,
-      rgba(255, 60, 60, 0.78) 12%,
-      rgba(255, 120, 40, 0.66) 24%,
-      rgba(255, 200, 80, 0.54) 34%,
-      rgba(0, 255, 160, 0.50) 46%,
-      rgba(0, 200, 255, 0.56) 58%,
-      rgba(0, 120, 255, 0.68) 70%,
-      rgba(160, 60, 255, 0.54) 82%,
-      rgba(15, 15, 18, 0) 94%
+    radial-gradient(1100px 900px at 12% 18%,
+      rgba(255, 40, 120, 0.42) 0%,
+      rgba(255, 40, 120, 0.18) 38%,
+      rgba(15, 15, 18, 0) 72%
     ),
-    linear-gradient(180deg, rgba(15,15,18,0.92), rgba(15,15,18,0.92));
-
+    radial-gradient(1000px 820px at 86% 22%,
+      rgba(0, 210, 255, 0.36) 0%,
+      rgba(0, 210, 255, 0.16) 40%,
+      rgba(15, 15, 18, 0) 74%
+    ),
+    radial-gradient(980px 860px at 62% 88%,
+      rgba(0, 255, 170, 0.26) 0%,
+      rgba(0, 255, 170, 0.10) 42%,
+      rgba(15, 15, 18, 0) 78%
+    ),
+    radial-gradient(900px 720px at 28% 92%,
+      rgba(160, 80, 255, 0.26) 0%,
+      rgba(160, 80, 255, 0.10) 45%,
+      rgba(15, 15, 18, 0) 80%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(15,15,18,0.97),
+      rgba(15,15,18,0.97)
+    );
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 160% 160%;
-
-  animation: hueShiftGlow 28s ease-in-out infinite;
+  animation: hueShiftGlow 32s ease-in-out infinite;
 }
 
 @keyframes hueShiftGlow {
-  0%   { background-position: 0% 0%, center; }
-  50%  { background-position: 18% 12%, center; }
-  100% { background-position: 0% 0%, center; }
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%, center;
+  }
+  50% {
+    background-position: 10% 6%, 88% 10%, 56% 92%, 8% 88%, center;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%, center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body.hs-dark { animation: none; }
 }
 
-/* =========================
-   ACCESSIBILITY
-   ========================= */
-
 a { color: inherit; text-decoration: none; }
-
-/* :focus-visible {
-  outline: 3px solid rgba(255,255,255,0.9);
-  outline-offset: 3px;
-  border-radius: 6px;
-} */
-
-/* =========================
-   GLASS (HEADER + FOOTER)
-   ========================= */
 
 .hs-glass {
   background: rgba(15,15,18,0.62);
   backdrop-filter: blur(12px);
 }
-
-/* =========================
-   TYPE
-   ========================= */
 
 .hs-logo {
   letter-spacing: 0.3em;
@@ -91,10 +84,6 @@ a { color: inherit; text-decoration: none; }
   max-width: 520px;
   opacity: 0.80;
 }
-
-/* =========================
-   FEATURE STRIP
-   ========================= */
 
 .hs-feature {
   position: relative;
@@ -133,6 +122,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   gap: 10px;
   padding: 0 12px;
+  align-items: flex-start;
 }
 
 .hs-feature__kicker {
@@ -163,9 +153,14 @@ a { color: inherit; text-decoration: none; }
   font-size: .85rem;
 }
 
-/* =========================
-   TILE GRID
-   ========================= */
+.hs-feature__kicker,
+.hs-feature__name,
+.hs-feature__text,
+.hs-feature__cta {
+  background: #000;
+  display: inline;
+  padding: 2px 4px 8px 8px;
+}
 
 .hs-tiles .col-md-4 {
   padding: 10px;
@@ -176,16 +171,13 @@ a { color: inherit; text-decoration: none; }
   display: block;
   height: 520px;
   overflow: hidden;
-  /* border-radius: 18px; */
 }
 
-/* COOL BORDER */
 .hs-panel::before {
   content: "";
   position: absolute;
   inset: 0;
   padding: 10px;
-  border-radius: 0;
   background: linear-gradient(135deg,
     rgba(255, 30, 70, .85),
     rgba(0, 200, 255, .65),
@@ -196,7 +188,7 @@ a { color: inherit; text-decoration: none; }
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  mask-composite: exclude;
   pointer-events: none;
   opacity: .55;
   transition: opacity .35s ease;
@@ -229,10 +221,11 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   line-height: 1;
   z-index: 4;
+  background: #000;
+  padding: 2px 2px 5px 6px;
   pointer-events: none;
 }
 
-/* readability */
 .hs-panel::after {
   content: "";
   position: absolute;
@@ -247,12 +240,7 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-/* =========================
-   DOSSIER BLOCK (FEATURE PAGE)
-   ========================= */
-
 .hs-dossier {
-  border-radius: 18px;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.22);
   padding: 18px;
@@ -280,17 +268,6 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.6;
 }
 
-.hs-dossier-img {
-  max-height: 80vh;
-  object-fit: cover;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,.10);
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-
 .hs-footer-inner {
   display: flex;
   align-items: center;
@@ -310,21 +287,16 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: normal;
 }
 
-/* =========================
-   LEW PAGE — HERO FRAME
-   ========================= */
-
-.hs-heroFrame{
+.hs-heroFrame {
   position: relative;
   height: 72vh;
   min-height: 520px;
-  border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.22);
 }
 
-.hs-heroImg{
+.hs-heroImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -332,7 +304,7 @@ a { color: inherit; text-decoration: none; }
   transform: scale(1.02);
 }
 
-.hs-heroShade{
+.hs-heroShade {
   position:absolute;
   inset:0;
   background:
@@ -341,14 +313,14 @@ a { color: inherit; text-decoration: none; }
   pointer-events:none;
 }
 
-.hs-heroText{
+.hs-heroText {
   position:absolute;
   left: 22px;
   right: 22px;
   bottom: 22px;
 }
 
-.hs-heroName{
+.hs-heroName {
   margin: 6px 0 10px;
   font-weight: 900;
   letter-spacing: .12em;
@@ -357,13 +329,13 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
 }
 
-.hs-heroRole{
+.hs-heroRole {
   display:flex;
   gap:10px;
   flex-wrap:wrap;
 }
 
-.hs-chip{
+.hs-chip {
   display:inline-flex;
   align-items:center;
   padding: 8px 12px;
@@ -376,3 +348,42 @@ a { color: inherit; text-decoration: none; }
   font-size: .72rem;
   text-transform: uppercase;
 }
+
+.hs-subPage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.hs-profileFrame,
+.hs-actionFrame {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+  overflow: hidden;
+}
+
+.hs-profileFrame {
+  height: 240px;
+}
+
+.hs-actionFrame {
+  height: 320px;
+}
+
+.hs-profileFrame img,
+.hs-actionFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hs-panel--llew        { background-color: #a92153; }
+.hs-panel--starlot     { background-color: #da9049; }
+.hs-panel--sadie       { background-color: #f788a7; }
+.hs-panel--blac        { background-color: #9f83d5; }
+.hs-panel--rufus       { background-color: #1fa1ed; }
+.hs-panel--cidermayer  { background-color: #a6b0b1; }
