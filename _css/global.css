@@ -2,32 +2,14 @@ body.hs-dark {
   color: #f2f2f2;
   background-color: #0f0f12;
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
-  background-image:
-    radial-gradient(1100px 900px at 12% 18%,
-      rgba(255, 40, 120, 0.42) 0%,
-      rgba(255, 40, 120, 0.18) 38%,
-      rgba(15, 15, 18, 0) 72%
-    ),
-    radial-gradient(1000px 820px at 86% 22%,
-      rgba(0, 210, 255, 0.36) 0%,
-      rgba(0, 210, 255, 0.16) 40%,
-      rgba(15, 15, 18, 0) 74%
-    ),
-    radial-gradient(980px 860px at 62% 88%,
-      rgba(0, 255, 170, 0.26) 0%,
-      rgba(0, 255, 170, 0.10) 42%,
-      rgba(15, 15, 18, 0) 78%
-    ),
-    radial-gradient(900px 720px at 28% 92%,
-      rgba(160, 80, 255, 0.26) 0%,
-      rgba(160, 80, 255, 0.10) 45%,
-      rgba(15, 15, 18, 0) 80%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(15,15,18,0.97),
-      rgba(15,15,18,0.97)
-    );
+  background-image: linear-gradient(
+    to right bottom,
+    #051937,
+    #004d7a,
+    #008793,
+    #00bf72,
+    #a8eb12
+  );
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 160% 160%;
@@ -166,6 +148,10 @@ a { color: inherit; text-decoration: none; }
   padding: 10px;
 }
 
+/* ===============================
+   CHARACTER TILES (PANELS)
+   =============================== */
+
 .hs-panel {
   position: relative;
   display: block;
@@ -173,12 +159,14 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
+/* Neon border frame */
 .hs-panel::before {
   content: "";
   position: absolute;
   inset: 0;
   padding: 10px;
-  background: linear-gradient(135deg,
+  background: linear-gradient(
+    135deg,
     rgba(255, 30, 70, .85),
     rgba(0, 200, 255, .65),
     rgba(0, 255, 160, .55),
@@ -195,20 +183,33 @@ a { color: inherit; text-decoration: none; }
   z-index: 3;
 }
 
-.hs-panel:hover::before {
+.hs-panel:hover::before,
+.hs-panel:focus-visible::before {
   opacity: .9;
 }
 
+/* IMAGE — GREYSCALE BY DEFAULT (DESKTOP) */
 .hs-panel img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .45s ease;
+  filter: grayscale(.9) contrast(1.05) brightness(.95);
+  transition: transform .45s ease, filter .35s ease;
 }
 
-.hs-panel:hover img {
+/* IMAGE — FULL COLOR ON HOVER / FOCUS */
+.hs-panel:hover img,
+.hs-panel:focus-visible img {
   transform: scale(1.06);
+  filter: none;
+}
+
+/* MOBILE / TOUCH — ALWAYS FULL COLOR */
+@media (hover: none) and (pointer: coarse) {
+  .hs-panel img {
+    filter: none;
+  }
 }
 
 .hs-panel-label {
@@ -240,6 +241,10 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
+/* ===============================
+   DOSSIER / DETAIL
+   =============================== */
+
 .hs-dossier {
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.22);
@@ -268,6 +273,10 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.6;
 }
 
+/* ===============================
+   FOOTER
+   =============================== */
+
 .hs-footer-inner {
   display: flex;
   align-items: center;
@@ -286,6 +295,10 @@ a { color: inherit; text-decoration: none; }
   opacity: 0.65;
   letter-spacing: normal;
 }
+
+/* ===============================
+   HERO
+   =============================== */
 
 .hs-heroFrame {
   position: relative;
@@ -349,6 +362,10 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
 }
 
+/* ===============================
+   SUB PAGES
+   =============================== */
+
 .hs-subPage-header {
   display: flex;
   justify-content: space-between;
@@ -365,13 +382,8 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-.hs-profileFrame {
-  height: 240px;
-}
-
-.hs-actionFrame {
-  height: 320px;
-}
+.hs-profileFrame { height: 240px; }
+.hs-actionFrame  { height: 320px; }
 
 .hs-profileFrame img,
 .hs-actionFrame img {
@@ -380,6 +392,10 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   display: block;
 }
+
+/* ===============================
+   CHARACTER COLOR BACKINGS
+   =============================== */
 
 .hs-panel--llew        { background-color: #a92153; }
 .hs-panel--starlot     { background-color: #da9049; }
