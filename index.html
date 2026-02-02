@@ -11,10 +11,34 @@
 
 <body class="hs-dark d-flex flex-column min-vh-100">
 
-<header class="container-fluid py-3 hs-glass border-bottom border-light border-opacity-10">
-  <div class="container d-flex justify-content-between align-items-center">
-    <strong class="hs-logo">HUE SHIFT</strong>
-    <span class="hs-sub">COLOUR OF FATE</span>
+<header class="container-fluid hs-glass border-bottom border-light border-opacity-10">
+  <div class="container">
+    <nav class="navbar navbar-dark navbar-expand-md px-0 py-3">
+      <a class="navbar-brand m-0" href="index.html">
+        <strong class="hs-logo">HUE SHIFT</strong>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hsNav" aria-controls="hsNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="hsNav">
+        <ul class="navbar-nav gap-md-3 mt-3 mt-md-0 align-items-md-center">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#featured">Featured</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#characters">Characters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="_characters/lew.html">Spotlight</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -23,10 +47,10 @@
   <section class="container py-3 py-md-5">
     <h1 class="hs-title">Hue Shift</h1>
     <h2 class="hs-subtitle">Colour of Fate</h2>
-    <p class="hs-blurb">The mech, Cidermayer's final mission and end of the Ne'er-do-wells.</p>
+    <p class="hs-blurb">The Ne'er-do-wells are highly skilled Mech pilots of the mech, Cidermayer. Their most recent mission will test the limits of their friendships and their fate.</p>
   </section>
 
-  <section class="container-fluid mb-5">
+  <section class="container-fluid mb-5" id="featured">
     <a href="_characters/lew.html" class="hs-feature">
       <img src="_img/wide-hs-llew.jpg" alt="">
       <div class="hs-feature__overlay"></div>
@@ -35,58 +59,58 @@
         <div class="hs-feature__kicker">FEATURED</div>
         <div class="hs-feature__name">LLEWELLYN</div>
         <div class="hs-feature__text">
-          The leader of the Ne'er-do-wells and main pilot of Cidermayer. This final mission may test her limits.
+          The leader of the Ne'er-do-wells and main pilot of Cidermayer. This final mission may test the limits of their friendships and their fate.
         </div>
         <div class="hs-feature__cta">Open dossier</div>
       </div>
     </a>
   </section>
 
-  <section class="container-fluid mb-5">
+  <section class="container-fluid mb-5" id="characters">
     <section class="container">
       <h3>Characters</h3>
       <div class="row g-0 hs-tiles justify-content-center">
 
         <div class="col-md-4">
-        <a href="_characters/lew.html" class="hs-panel hs-panel--llew">
+          <a href="_characters/lew.html" class="hs-panel hs-panel--llew">
             <img src="_img/char-hs-llew.png" alt="">
             <div class="hs-panel-label">LLEWELLYN</div>
-        </a>
+          </a>
         </div>
 
         <div class="col-md-4">
-        <div class="hs-panel hs-panel--starlot">
+          <div class="hs-panel hs-panel--starlot">
             <img src="_img/char-hs-star.png" alt="">
             <div class="hs-panel-label">STARLOT</div>
-        </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-        <div class="hs-panel hs-panel--sadie">
+          <div class="hs-panel hs-panel--sadie">
             <img src="_img/char-hs-sad.png" alt="">
             <div class="hs-panel-label">SADIE</div>
-        </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-        <div class="hs-panel hs-panel--blac">
+          <div class="hs-panel hs-panel--blac">
             <img src="_img/char-hs-blac.png" alt="">
             <div class="hs-panel-label">BLAC</div>
-        </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-        <div class="hs-panel hs-panel--rufus">
+          <div class="hs-panel hs-panel--rufus">
             <img src="_img/char-hs-rufus.png" alt="">
             <div class="hs-panel-label">RUFUS</div>
-        </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-        <div class="hs-panel hs-panel--cidermayer">
+          <div class="hs-panel hs-panel--cidermayer">
             <img src="_img/char-hs-cider.png" alt="">
             <div class="hs-panel-label">CIDERMAYER</div>
-        </div>
+          </div>
         </div>
 
       </div>
@@ -106,6 +130,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="_js/global.js"></script>
 </body>
 </html>

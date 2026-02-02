@@ -11,10 +11,34 @@
 
 <body class="hs-dark d-flex flex-column min-vh-100">
 
-<header class="container-fluid py-3 hs-glass border-bottom border-light border-opacity-10">
-  <div class="container d-flex justify-content-between align-items-center">
-    <strong class="hs-logo">HUE SHIFT</strong>
-    <span class="hs-sub">COLOUR OF FATE</span>
+<header class="container-fluid hs-glass border-bottom border-light border-opacity-10">
+  <div class="container">
+    <nav class="navbar navbar-dark navbar-expand-md px-0 py-3">
+      <a class="navbar-brand m-0" href="../index.html">
+        <strong class="hs-logo">HUE SHIFT</strong>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hsNav" aria-controls="hsNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="hsNav">
+        <ul class="navbar-nav gap-md-3 mt-3 mt-md-0 align-items-md-center">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html#featured">Featured</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html#characters">Characters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="lew.html">Spotlight</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -23,7 +47,7 @@
 
     <div class="hs-subPage-header">
       <div class="hs-sub">NE'ER-DO-WELL PROFILE</div>
-      <a href="../index.html" class="btn btn-outline-light btn-sm">← Back to All Characters</a>
+      <a href="../index.html#characters" class="btn btn-outline-light btn-sm">← Back to Characters</a>
     </div>
 
     <div class="row g-4">
@@ -33,7 +57,6 @@
           <img src="https://picsum.photos/id/1011/1600/2000" class="hs-heroImg" alt="">
           <div class="hs-heroShade"></div>
           <div class="hs-heroText">
-            <div class="hs-sub">LLEWELLYN</div>
             <h1 class="hs-heroName">LLEWELLYN</h1>
             <div class="hs-heroRole">
               <span class="hs-chip">ACTIVE</span>
@@ -91,17 +114,18 @@
   </div>
 </main>
 
-<footer class="container-fluid hs-glass border-top border-light border-opacity-10 mt-auto">
+<footer class="hs-footer hs-glass mt-auto border-top border-light border-opacity-10">
   <div class="container py-3">
     <div class="hs-footer-inner">
       <div class="hs-footer-left">
         <strong class="hs-logo">HUE SHIFT</strong>
-        <span class="hs-sub">© <span id="year"></span></span>
+        <span class="hs-sub">© Copyright HueShift <span id="year"></span>. All Rights Reserved.</span>
       </div>
     </div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../_js/global.js"></script>
 </body>
 </html>
