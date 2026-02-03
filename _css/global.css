@@ -241,6 +241,7 @@ footer .hs-sub {
   display: block;
   height: 520px;
   overflow: hidden;
+  background-color: #a32a1e;
 }
 
 .hs-panel::before {
@@ -478,12 +479,12 @@ footer .hs-sub {
   display: block;
 }
 
-.hs-panel--llew        { background-color: #a92153; }
+/* .hs-panel--llew        { background-color: #a92153; }
 .hs-panel--starlot     { background-color: #a32a1e; }
 .hs-panel--sadie       { background-color: #c75822; }
 .hs-panel--blac        { background-color: #614c89; }
 .hs-panel--rufus       { background-color: #5849ad; }
-.hs-panel--cidermayer  { background-color: #5159bd; }
+.hs-panel--cidermayer  { background-color: #5159bd; } */
 
 .hs-backTop {
   position: fixed;
