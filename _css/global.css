@@ -83,10 +83,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hs-sub {
-    font-size: 0.8rem;
-    letter-spacing: 0.2em;
-    padding: 3px 5px 4px 5px;
-    background: #000;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  padding: 3px 5px 4px 5px;
+  background: #000;
+}
+
+footer .hs-sub {
+  background-color: transparent;
 }
 
 .hs-title {
@@ -216,7 +220,7 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
   opacity: .55;
   transition: opacity .35s ease;
-  z-index: 3;
+  z-index: 5;
 }
 
 .hs-panel:hover::before,
@@ -224,11 +228,41 @@ a { color: inherit; text-decoration: none; }
   opacity: .9;
 }
 
+.hs-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.12) 0,
+      rgba(255,255,255,0.12) 2px,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,0) 12px
+    );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.4) 35%,
+    rgba(0,0,0,0) 60%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.4) 35%,
+    rgba(0,0,0,0) 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
 .hs-panel img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  position: relative;
+  z-index: 2;
   filter: grayscale(.9) contrast(1.05) brightness(.95);
   transition: transform .45s ease, filter .35s ease;
 }
@@ -254,23 +288,9 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.20em;
   text-transform: uppercase;
   line-height: 1;
-  z-index: 4;
+  z-index: 6;
   background: #000;
   padding: 2px 2px 5px 6px;
-  pointer-events: none;
-}
-
-.hs-panel::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.65) 0%,
-    rgba(0,0,0,0.25) 42%,
-    rgba(0,0,0,0) 72%
-  );
-  z-index: 2;
   pointer-events: none;
 }
 
@@ -460,14 +480,14 @@ a { color: inherit; text-decoration: none; }
 
 .btn-primary,
 .btn-primary:hover {
-    background-color: #0f0c3b;
-    border-color: #fff;
-    color: #fff;
+  background-color: #0f0c3b;
+  border-color: #fff;
+  color: #fff;
 }
 
 .btn-secondary,
 .btn-secondary:hover {
-    background-color: #008793;
-    border-color: #fff;
-    color: #fff;
+  background-color: #008793;
+  border-color: #fff;
+  color: #fff;
 }
