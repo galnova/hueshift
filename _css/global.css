@@ -114,6 +114,8 @@ footer .hs-sub {
   position: relative;
   display: block;
   height: 420px;
+  border-top: solid 10px #000;
+  border-bottom: solid 10px #000;
   overflow: hidden;
 }
 
