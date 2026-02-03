@@ -241,9 +241,25 @@ footer .hs-sub {
 .hs-panel {
   position: relative;
   display: block;
-  height: 520px;
+  height: 570px;
   overflow: hidden;
   background-color: #a32a1e;
+}
+
+.hs-panel-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 8;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  pointer-events: none;
 }
 
 .hs-panel::before {
@@ -481,13 +497,6 @@ footer .hs-sub {
   display: block;
 }
 
-/* .hs-panel--llew        { background-color: #a92153; }
-.hs-panel--starlot     { background-color: #a32a1e; }
-.hs-panel--sadie       { background-color: #c75822; }
-.hs-panel--blac        { background-color: #614c89; }
-.hs-panel--rufus       { background-color: #5849ad; }
-.hs-panel--cidermayer  { background-color: #5159bd; } */
-
 .hs-backTop {
   position: fixed;
   right: 20px;
@@ -534,7 +543,7 @@ footer .hs-sub {
 
 .btn-secondary,
 .btn-secondary:hover {
-    background-color: #fff;
-    border-color: #fff;
-    color: #000;
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
 }
