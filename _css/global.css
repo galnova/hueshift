@@ -534,7 +534,7 @@ footer .hs-sub {
 
 .btn-secondary,
 .btn-secondary:hover {
-  background-color: #008793;
-  border-color: #fff;
-  color: #fff;
+    background-color: #fff;
+    border-color: #fff;
+    color: #000;
 }
