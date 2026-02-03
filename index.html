@@ -9,7 +9,7 @@
   <link href="_css/global.css" rel="stylesheet">
 </head>
 
-<body id="top" class="hs-dark custom-pattern d-flex flex-column min-vh-100 ">
+<body id="top" class="hs-dark custom-pattern d-flex flex-column min-vh-100">
 
 <a href="#top" class="hs-backTop" aria-label="Back to top">↑</a>
 
@@ -27,18 +27,44 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="hsNav">
         <ul class="navbar-nav gap-md-3 mt-3 mt-md-0 align-items-md-center">
+
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#featured">Featured</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="#characters">Characters</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="_dossiers/llew.html">Spotlight</a>
           </li>
+
+          <!-- Chapters Dropdown -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="chaptersDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chapters
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="chaptersDropdown">
+              <li>
+                <a class="dropdown-item" href="_chapters/chapter-one.html">
+                  Chapter One
+                </a>
+              </li>
+            </ul>
+          </li>
+
         </ul>
       </div>
     </nav>
@@ -48,12 +74,21 @@
 <main class="flex-grow-1">
 
   <section class="container py-3 py-md-5">
-    <h1 class="hs-title">Hue Shift</h1>
-    <h2 class="hs-subtitle">Colour of Fate</h2>
-    <p class="hs-blurb">The Ne'er-do-wells are highly skilled Mech pilots of the mech, Cidermayer. Their most recent mission will test the limits of their friendships and their fate.</p>
+    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+      <h1 class="hs-title m-0">Hue Shift</h1>
+      <div class="d-flex mb-3 mb-md-0 gap-2 flex-wrap">
+        <a href="_chapters/chapter-one.html" class="btn btn-primary">Chapter one</a>
+        <a href="previous-chapters.html" class="btn btn-secondary">Previous chapters</a>
+      </div>
+    </div>
+    <h2 class="hs-subtitle mt-2">Colour of Fate</h2>
+    <p class="hs-blurb">
+      The Ne'er-do-wells are highly skilled Mech pilots of the mech, Cidermayer.
+      Their most recent mission will test the limits of their friendships and their fate.
+    </p>
   </section>
 
-  <section class="container-fluid mb-5" id="featured">
+  <section class="container-fluid p-0 m-0 mb-5" id="featured">
     <a href="_dossiers/llew.html" class="hs-feature">
       <img src="_img/wide-hs-llew.jpg" alt="">
       <div class="hs-feature__overlay"></div>
@@ -62,7 +97,8 @@
         <div class="hs-feature__kicker">FEATURED</div>
         <div class="hs-feature__name">LLEWELLYN</div>
         <div class="hs-feature__text">
-          The leader of the Ne'er-do-wells and main pilot of Cidermayer. This final mission may test the limits of their friendships and their fate.
+          The leader of the Ne'er-do-wells and main pilot of Cidermayer.
+          This final mission may test the limits of their friendships and their fate.
         </div>
         <div class="hs-feature__cta">Open dossier →</div>
       </div>
@@ -127,7 +163,9 @@
     <div class="hs-footer-inner">
       <div class="hs-footer-left">
         <strong class="hs-logo">HUE SHIFT</strong>
-        <span class="hs-sub">© Copyright HueShift <span id="year"></span>. All Rights Reserved.</span>
+        <span class="hs-sub">
+          © Copyright HueShift <span id="year"></span>. All Rights Reserved.
+        </span>
       </div>
     </div>
   </div>
