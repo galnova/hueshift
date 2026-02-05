@@ -41,12 +41,7 @@ body.hs-dark::before {
     rgba(0,0,0,0.35) 75%,
     rgba(0,0,0,0) 100%
   );
-  z-index: 0;
-}
-
-body.hs-dark > *:not(.hs-backTop) {
-  position: relative;
-  z-index: 1;
+  z-index: -1;
 }
 
 @keyframes hueShiftGlow {
