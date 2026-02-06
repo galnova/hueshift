@@ -490,6 +490,69 @@ footer .hs-sub {
   border: solid 3px #000;
   object-fit: cover;
   display: block;
+  position: relative;
+  z-index: 2;
+}
+
+.hs-tileTreatment {
+  position: relative;
+  background-color: #a32a1e;
+}
+
+.hs-tileTreatment::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 30, 70, .85),
+    rgba(0, 200, 255, .65),
+    rgba(0, 255, 160, .55),
+    rgba(160, 60, 255, .65)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: .55;
+  transition: opacity .35s ease;
+  z-index: 5;
+}
+
+.hs-tileTreatment:hover::before,
+.hs-tileTreatment:focus-within::before {
+  opacity: .9;
+}
+
+.hs-tileTreatment::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.12) 0,
+      rgba(255,255,255,0.12) 2px,
+      rgba(255,255,255,0) 2px,
+      rgba(255,255,255,0) 12px
+    );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.45) 40%,
+    rgba(0,0,0,0) 65%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.45) 40%,
+    rgba(0,0,0,0) 65%
+  );
+  pointer-events: none;
+  z-index: 4;
 }
 
 .hs-backTop {
