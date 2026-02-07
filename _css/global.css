@@ -644,3 +644,12 @@ header.hs-glass .dropdown-menu{
   position:absolute;
   z-index:4200;
 }
+
+.modal {
+  position: fixed;
+  z-index: 5000;
+}
+
+.modal-backdrop {
+  z-index: 4900;
+}
