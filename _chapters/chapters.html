@@ -23,27 +23,26 @@
         <img src="../_img/hs-logo.jpg" alt="Hue Shift" class="hs-brand-logo">
       </a>
 
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hsNav" aria-controls="hsNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hsNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse justify-content-end" id="hsNav">
         <ul class="navbar-nav gap-md-3 mt-3 mt-md-0 align-items-md-center">
 
-          <li class="nav-item">
-            <a class="nav-link" href="../index.html">Home</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle active" href="#" id="chaptersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active" href="#" id="chaptersDropdown" data-bs-toggle="dropdown">
               Chapters
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="chaptersDropdown">
+            <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item active" href="../_chapters/chapters.html">All Chapters</a></li>
               <li><a class="dropdown-item" href="../_chapters/c-1.html">Chapter One</a></li>
             </ul>
           </li>
 
+          <li class="nav-item"><a class="nav-link" href="../extras.html">Extras</a></li>
         </ul>
       </div>
     </nav>
@@ -59,14 +58,12 @@
         <h2 class="hs-subtitle mt-2">All Chapters</h2>
       </div>
       <div class="col-12 col-md-auto">
-        <div class="d-flex gap-2 flex-wrap justify-content-md-end">
-          <a href="../index.html" class="btn btn-secondary">Back home</a>
-        </div>
+        <a href="../index.html" class="btn btn-secondary">Back home</a>
       </div>
     </div>
 
     <p class="hs-blurb mt-3 mb-0">
-      Browse chapters using the slideshow. Swipe on mobile, or use the arrows on desktop.
+      Browse chapters using the slideshow. Swipe on mobile or use the arrows.
     </p>
   </section>
 
@@ -80,174 +77,60 @@
             <div class="fw-bold fs-5">Chapters</div>
           </div>
           <div class="col-12 col-md-auto">
-            <div class="d-flex flex-wrap gap-2 justify-content-md-end">
-              <button class="btn btn-sm btn-outline-light rounded-pill hs-jump" type="button" data-hs-jump="0">Ch 1</button>
-              <button class="btn btn-sm btn-outline-light rounded-pill hs-jump" type="button" data-hs-jump="1">Ch 2</button>
-              <button class="btn btn-sm btn-outline-light rounded-pill hs-jump" type="button" data-hs-jump="2">Ch 3</button>
-              <button class="btn btn-sm btn-outline-light rounded-pill hs-jump" type="button" data-hs-jump="3">Ch 4</button>
+            <div class="d-flex gap-2 justify-content-md-end">
+              <button class="btn btn-sm btn-outline-light rounded-pill hs-jump" data-hs-jump="0">Ch 1</button>
+              <button class="btn btn-sm btn-outline-light rounded-pill hs-jump" data-hs-jump="1">Ch 2</button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="p-3 p-md-4">
-        <div class="swiper hs-swiper" aria-label="All chapters slideshow">
+        <div class="swiper hs-swiper position-relative">
           <div class="swiper-wrapper">
 
+            <!-- Slide 1 -->
             <div class="swiper-slide">
               <div class="row g-3 g-md-4 align-items-stretch">
-
                 <div class="col-12 col-lg-7">
-                  <div class="border border-light border-opacity-10 rounded-4 overflow-hidden bg-black bg-opacity-25 h-100">
-                    <img src="_img/chapters/ch1-cover.jpg" alt="Chapter One cover" class="w-100 hs-cover" loading="lazy">
+                  <img src="_img/chapters/ch1-cover.jpg" class="w-100 hs-cover" alt="Chapter One">
+                </div>
+                <div class="col-12 col-lg-5 d-flex flex-column">
+                  <h3 class="h4 mb-1">1 – Atrocities</h3>
+                  <p class="opacity-90">The team returns from their 50th mission and things get weird.</p>
+                  <div class="mt-auto">
+                    <a class="btn btn-secondary" href="c-1.html">Open Chapter 1</a>
                   </div>
                 </div>
-
-                <div class="col-12 col-lg-5">
-                  <div class="border border-light border-opacity-10 rounded-4 bg-black bg-opacity-25 p-3 p-md-4 h-100 d-flex flex-column">
-
-                    <div class="mb-2">
-                      <h3 class="h4 mb-1">1 - Atrocities</h3>
-                      <p class="opacity-90 mb-0">Short blurb for Chapter One goes here.</p>
-                    </div>
-
-                    <div class="mt-3">
-                      <div class="small opacity-75 mb-2">Main characters in this episode</div>
-                      <div class="d-flex flex-wrap gap-2">
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Llewellyn</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Sadie</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Gris</span>
-                      </div>
-                    </div>
-
-                    <div class="mt-auto pt-3">
-                      <a class="btn btn-secondary" href="c-1.html">Open Chapter 1</a>
-                    </div>
-
-                  </div>
-                </div>
-
               </div>
             </div>
 
-            <!-- <div class="swiper-slide">
-              <div class="row g-3 g-md-4 align-items-stretch">
-
-                <div class="col-12 col-lg-7">
-                  <div class="border border-light border-opacity-10 rounded-4 overflow-hidden bg-black bg-opacity-25 h-100">
-                    <img src="_img/chapters/ch2-cover.jpg" alt="Chapter Two cover" class="w-100 hs-cover" loading="lazy">
-                  </div>
-                </div>
-
-                <div class="col-12 col-lg-5">
-                  <div class="border border-light border-opacity-10 rounded-4 bg-black bg-opacity-25 p-3 p-md-4 h-100 d-flex flex-column">
-
-                    <div class="mb-2">
-                      <h3 class="h4 mb-1">Chapter Two</h3>
-                      <p class="opacity-90 mb-0">Short blurb for Chapter Two goes here.</p>
-                    </div>
-
-                    <div class="mt-3">
-                      <div class="small opacity-75 mb-2">Main characters in this episode</div>
-                      <div class="d-flex flex-wrap gap-2">
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Llewellyn</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Sadie</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Gris</span>
-                      </div>
-                    </div>
-
-                    <div class="mt-auto pt-3">
-                      <a class="btn btn-secondary" href="_chapters/chapter-two.html">Open Chapter Two</a>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
+            <!-- Slide 2 -->
             <div class="swiper-slide">
               <div class="row g-3 g-md-4 align-items-stretch">
-
                 <div class="col-12 col-lg-7">
-                  <div class="border border-light border-opacity-10 rounded-4 overflow-hidden bg-black bg-opacity-25 h-100">
-                    <img src="_img/chapters/ch3-cover.jpg" alt="Chapter Three cover" class="w-100 hs-cover" loading="lazy">
+                  <img src="_img/chapters/ch2-cover.jpg" class="w-100 hs-cover" alt="Chapter Two">
+                </div>
+                <div class="col-12 col-lg-5 d-flex flex-column">
+                  <h3 class="h4 mb-1">2 – Vests</h3>
+                  <p class="opacity-90">Before the party, Sadie binge-watches her favorite show.</p>
+                  <div class="mt-auto">
+                    <a class="btn btn-secondary" href="c-2.html">Open Chapter 2</a>
                   </div>
                 </div>
-
-                <div class="col-12 col-lg-5">
-                  <div class="border border-light border-opacity-10 rounded-4 bg-black bg-opacity-25 p-3 p-md-4 h-100 d-flex flex-column">
-
-                    <div class="mb-2">
-                      <h3 class="h4 mb-1">Chapter Three</h3>
-                      <p class="opacity-90 mb-0">Short blurb for Chapter Three goes here.</p>
-                    </div>
-
-                    <div class="mt-3">
-                      <div class="small opacity-75 mb-2">Main characters in this episode</div>
-                      <div class="d-flex flex-wrap gap-2">
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Llewellyn</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Sadie</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Gris</span>
-                      </div>
-                    </div>
-
-                    <div class="mt-auto pt-3">
-                      <a class="btn btn-secondary" href="_chapters/chapter-three.html">Open Chapter Three</a>
-                    </div>
-
-                  </div>
-                </div>
-
               </div>
             </div>
-
-            <div class="swiper-slide">
-              <div class="row g-3 g-md-4 align-items-stretch">
-
-                <div class="col-12 col-lg-7">
-                  <div class="border border-light border-opacity-10 rounded-4 overflow-hidden bg-black bg-opacity-25 h-100">
-                    <img src="_img/chapters/ch4-cover.jpg" alt="Chapter Four cover" class="w-100 hs-cover" loading="lazy">
-                  </div>
-                </div>
-
-                <div class="col-12 col-lg-5">
-                  <div class="border border-light border-opacity-10 rounded-4 bg-black bg-opacity-25 p-3 p-md-4 h-100 d-flex flex-column">
-
-                    <div class="mb-2">
-                      <h3 class="h4 mb-1">Atrocities</h3>
-                      <p class="opacity-90 mb-0">Short blurb for Chapter Four goes here.</p>
-                    </div>
-
-                    <div class="mt-3">
-                      <div class="small opacity-75 mb-2">Main characters in this episode</div>
-                      <div class="d-flex flex-wrap gap-2">
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Llewellyn</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Sadie</span>
-                        <span class="badge rounded-pill text-bg-secondary text-uppercase">Gris</span>
-                      </div>
-                    </div>
-
-                    <div class="mt-auto pt-3">
-                      <a class="btn btn-secondary" href="_chapters/chapter-four.html">Open Chapter Four</a>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-            </div> -->
 
           </div>
 
-          <div class="d-flex align-items-center justify-content-between gap-3 mt-3 pt-3 border-top border-light border-opacity-10">
-            <div class="hs-pagination"></div>
-            <div class="d-flex align-items-center gap-2">
-              <button class="btn btn-outline-light btn-sm d-inline-flex align-items-center justify-content-center hs-nav hs-prev" type="button" aria-label="Previous slide">
-                <span aria-hidden="true" class="hs-caret hs-caret--left"></span>
+          <!-- Carets ONLY -->
+          <div class="hs-readerHud">
+            <div class="d-flex align-items-center gap-2 ms-auto">
+              <button class="btn btn-outline-light btn-sm hs-nav hs-prev" aria-label="Previous">
+                <span class="hs-caret hs-caret--left"></span>
               </button>
-              <button class="btn btn-outline-light btn-sm d-inline-flex align-items-center justify-content-center hs-nav hs-next" type="button" aria-label="Next slide">
-                <span aria-hidden="true" class="hs-caret hs-caret--right"></span>
+              <button class="btn btn-outline-light btn-sm hs-nav hs-next" aria-label="Next">
+                <span class="hs-caret hs-caret--right"></span>
               </button>
             </div>
           </div>
@@ -262,14 +145,8 @@
 
 <footer class="hs-footer hs-glass mt-auto border-top border-light border-opacity-10">
   <div class="container py-3">
-    <div class="hs-footer-inner">
-      <div class="hs-footer-left">
-        <strong class="hs-logo">HUE SHIFT</strong>
-        <span class="hs-sub">
-          © Copyright HueShift <span id="year"></span>. All Rights Reserved.
-        </span>
-      </div>
-    </div>
+    <strong class="hs-logo">HUE SHIFT</strong>
+    <span class="hs-sub">© Copyright HueShift <span id="year"></span></span>
   </div>
 </footer>
 
