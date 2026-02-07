@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Extras — Hue Shift</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link href="_css/global.css" rel="stylesheet">
+  <link href="_css/chapters.css" rel="stylesheet">
+</head>
+
+<body id="top" class="hs-dark custom-pattern d-flex flex-column min-vh-100">
+
+<a href="#top" class="hs-backTop" aria-label="Back to top">↑</a>
+
+<header class="container-fluid hs-glass border-bottom border-light border-opacity-10">
+  <div class="container">
+    <nav class="navbar navbar-dark navbar-expand-md px-0">
+      <a class="navbar-brand m-0 hs-brand" href="index.html">
+        <img src="_img/hs-logo.jpg" alt="Hue Shift" class="hs-brand-logo">
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#hsNav" aria-controls="hsNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="hsNav">
+        <ul class="navbar-nav gap-md-3 mt-3 mt-md-0 align-items-md-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="chaptersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Chapters</a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="chaptersDropdown">
+              <li><a class="dropdown-item" href="_chapters/chapters.html">All Chapters</a></li>
+              <li><a class="dropdown-item" href="_chapters/c-1.html">Chapter One</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link active" href="extras.html" aria-current="page">Extras</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-grow-1">
+
+  <section class="container py-3 py-md-5">
+    <div class="row align-items-start align-items-md-center g-3">
+      <div class="col-12 col-md">
+        <h1 class="hs-title m-0">Extras</h1>
+        <h2 class="hs-subtitle mt-2">Concept Art • Posters • Bonus Pages</h2>
+      </div>
+      <div class="col-12 col-md-auto">
+        <div class="d-flex gap-2 flex-wrap justify-content-md-end">
+          <a href="index.html" class="btn btn-secondary">Back Home</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="hs-blurb mt-3 mb-0">Tap an image to open the viewer. Swipe on mobile or use arrows on desktop.</p>
+  </section>
+
+  <section class="container pb-5">
+    <div class="hs-panel-shell border border-light border-opacity-10 rounded-4 overflow-hidden">
+      <div class="p-3 p-md-4">
+        <div class="row g-3 g-md-4 hs-extrasGrid">
+
+          <div class="col-6 col-md-4 col-lg-3"><button type="button" class="hs-pageTile hs-extraTile" data-bs-toggle="modal" data-bs-target="#extraReader" data-page="0" data-full="_img/HueShift-Cast-sm.jpg" aria-label="Open extra 1"><img src="_img/HueShift-Cast-sm.jpg" alt="Hue Shift Cast 1" loading="lazy" decoding="async"><span class="hs-pageNum">Ne'er 1</span></button></div>
+
+          <div class="col-6 col-md-4 col-lg-3"><button type="button" class="hs-pageTile hs-extraTile" data-bs-toggle="modal" data-bs-target="#extraReader" data-page="1" data-full="_img/HueShift-Cast-2-sm.jpg" aria-label="Open extra 2"><img src="_img/HueShift-Cast-2-sm.jpg" alt="Hue Shift Cast 2" loading="lazy" decoding="async"><span class="hs-pageNum">Ne'er 2</span></button></div>
+
+          <div class="col-6 col-md-4 col-lg-3"><button type="button" class="hs-pageTile hs-extraTile" data-bs-toggle="modal" data-bs-target="#extraReader" data-page="2" data-full="_img/HueShift-Cast-3-sm.jpg" aria-label="Open extra 3"><img src="_img/HueShift-Cast-3-sm.jpg" alt="Hue Shift Cast 3" loading="lazy" decoding="async"><span class="hs-pageNum">Ne'er 3</span></button></div>
+
+          <div class="col-6 col-md-4 col-lg-3"><button type="button" class="hs-pageTile hs-extraTile" data-bs-toggle="modal" data-bs-target="#extraReader" data-page="3" data-full="_img/HueShift-Cast-concept.jpg" aria-label="Open extra 4"><img src="_img/HueShift-Cast-concept.jpg" alt="Ne&#39;er-do-wells concept" loading="lazy" decoding="async"><span class="hs-pageNum">Concept 1</span></button></div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="extraReader" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down modal-xl modal-dialog-centered">
+      <div class="modal-content hs-readerModal border border-light border-opacity-10">
+        <div class="modal-header border-bottom border-light border-opacity-10">
+          <div class="d-flex flex-column">
+            <div class="text-uppercase small opacity-75 hs-kicker">Hue Shift</div>
+            <div class="fw-bold">Extras</div>
+          </div>
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <div class="swiper hs-readerSwiper" aria-label="Extras">
+            <div class="swiper-wrapper" id="hsExtrasWrapper"></div>
+
+            <div class="hs-readerHud">
+              <div class="hs-readerPagination"></div>
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-outline-light btn-sm d-inline-flex align-items-center justify-content-center hs-nav hs-readerPrev" type="button" aria-label="Previous image"><span aria-hidden="true" class="hs-caret hs-caret--left"></span></button>
+                <button class="btn btn-outline-light btn-sm d-inline-flex align-items-center justify-content-center hs-nav hs-readerNext" type="button" aria-label="Next image"><span aria-hidden="true" class="hs-caret hs-caret--right"></span></button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="hs-footer hs-glass mt-auto border-top border-light border-opacity-10">
+  <div class="container py-3">
+    <div class="hs-footer-inner">
+      <div class="hs-footer-left">
+        <strong class="hs-logo">HUE SHIFT</strong>
+        <span class="hs-sub">© Copyright HueShift <span id="year"></span>. All Rights Reserved.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="_js/global.js"></script>
+<script src="_js/reader.js"></script>
+
+</body>
+</html>
