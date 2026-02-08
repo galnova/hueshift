@@ -233,6 +233,51 @@ footer .hs-sub{background-color:transparent}
 :is(#extraReader,#pageReader) .hs-readerHud > *{pointer-events:auto}
 
 /* =========================
+   Mobile: force slide chain to true full height
+   (this is what fixes .swiper-slide-active not filling)
+   ========================= */
+
+@media (max-width: 767.98px) {
+  :is(#extraReader, #pageReader) .modal-content{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  :is(#extraReader, #pageReader) .modal-body{
+    flex:1 1 auto;
+    overflow:hidden;
+  }
+
+  :is(#extraReader, #pageReader) .hs-readerSwiper{
+    height:100%;
+  }
+
+  :is(#extraReader, #pageReader) .hs-readerSwiper .swiper-wrapper{
+    height:100%;
+    align-items:stretch;
+  }
+
+  :is(#extraReader, #pageReader) .hs-readerSwiper .swiper-slide{
+    height:100%;
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+  }
+
+  :is(#extraReader, #pageReader) .hs-pageFrame{
+    height:100%;
+    width:100%;
+    padding:14px;
+  }
+
+  :is(#extraReader, #pageReader) .hs-pageImg{
+    max-width:100%;
+    max-height:calc(100vh - 140px); /* adjust if your header/HUD is taller */
+  }
+}
+
+/* =========================
    Feature + other site styles (unchanged)
    ========================= */
 
@@ -630,6 +675,11 @@ footer .hs-sub{background-color:transparent}
   color:#000;
 }
 
+/* =========================
+   Fix dropdown behind content
+   Keep modal ABOVE dropdown
+   ========================= */
+
 header.hs-glass{
   position:relative;
   z-index:4000;
@@ -645,11 +695,12 @@ header.hs-glass .dropdown-menu{
   z-index:4200;
 }
 
-.modal {
-  position: fixed;
-  z-index: 5000;
+/* Bootstrap modal defaults are already high, but we pin them above header */
+.modal{
+  position:fixed;
+  z-index:5000;
 }
 
-.modal-backdrop {
-  z-index: 4900;
+.modal-backdrop{
+  z-index:4900;
 }
