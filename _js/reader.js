@@ -10,55 +10,42 @@
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
 
+  const buildSlideHtml = (btn, fallbackLabel) => {
+    const thumbImg = btn.querySelector("img");
+    const fullSrc = btn.getAttribute("data-full") || (thumbImg ? thumbImg.getAttribute("src") : "");
+    const alt = thumbImg ? (thumbImg.getAttribute("alt") || fallbackLabel) : fallbackLabel;
+
+    return (
+      `<div class="hs-pageFrame">` +
+      `<img src="${escHtml(fullSrc)}" alt="${escHtml(alt)}" class="hs-pageImg" loading="lazy" decoding="async">` +
+      `</div>`
+    );
+  };
+
   const initReader = ({
     modalId,
     wrapperId,
     tileSelector,
     label = "Image",
-    pageAttr = "data-page"
+    groupAttr = "data-group" // set to null to disable grouping
   }) => {
     const modalEl = document.getElementById(modalId);
     const wrapper = document.getElementById(wrapperId);
-    const tiles = Array.from(document.querySelectorAll(tileSelector));
 
-    if (!modalEl || !wrapper || !tiles.length) return;
+    if (!modalEl || !wrapper) return;
 
     const swiperEl = modalEl.querySelector(".hs-readerSwiper");
     if (!swiperEl) return;
 
+    const nextBtn = modalEl.querySelector(".hs-readerNext");
+    const prevBtn = modalEl.querySelector(".hs-readerPrev");
+    const pagEl = modalEl.querySelector(".hs-readerPagination");
+
     let swiper = null;
-    let built = false;
-
-    const buildSlidesOnce = () => {
-      if (built) return;
-      wrapper.innerHTML = "";
-
-      tiles.forEach((btn) => {
-        const thumbImg = btn.querySelector("img");
-        const fullSrc =
-          btn.getAttribute("data-full") ||
-          (thumbImg ? thumbImg.getAttribute("src") : "");
-        const alt = thumbImg ? (thumbImg.getAttribute("alt") || label) : label;
-
-        const slide = document.createElement("div");
-        slide.className = "swiper-slide";
-        slide.innerHTML =
-          `<div class="hs-pageFrame">` +
-          `<img src="${escHtml(fullSrc)}" alt="${escHtml(alt)}" class="hs-pageImg" loading="lazy" decoding="async">` +
-          `</div>`;
-
-        wrapper.appendChild(slide);
-      });
-
-      built = true;
-    };
+    let currentKey = null; // group key (or "__all__")
 
     const ensureSwiper = () => {
       if (swiper) return swiper;
-
-      const nextBtn = modalEl.querySelector(".hs-readerNext");
-      const prevBtn = modalEl.querySelector(".hs-readerPrev");
-      const pagEl = modalEl.querySelector(".hs-readerPagination");
 
       swiper = new Swiper(swiperEl, {
         loop: false,
@@ -78,7 +65,7 @@
         }
       });
 
-      // Extra-safe explicit click handlers (keeps HUD buttons reliable)
+      // Bind once
       if (nextBtn) {
         nextBtn.addEventListener("click", (e) => {
           if (!swiper) return;
@@ -99,20 +86,63 @@
       return swiper;
     };
 
+    const getTiles = () => Array.from(document.querySelectorAll(tileSelector));
+
+    const computeKey = (trigger) => {
+      if (!groupAttr) return "__all__";
+      const key = trigger ? trigger.getAttribute(groupAttr) : null;
+      return key || "__all__";
+    };
+
+    const filterTilesByKey = (tiles, key) => {
+      if (!groupAttr || key === "__all__") return tiles;
+      return tiles.filter((t) => (t.getAttribute(groupAttr) || "__all__") === key);
+    };
+
+    const rebuildSlides = (tilesForModal) => {
+      // wipe DOM wrapper (safe, because Swiper can re-read)
+      wrapper.innerHTML = "";
+
+      const slideEls = tilesForModal.map((btn) => {
+        const slide = document.createElement("div");
+        slide.className = "swiper-slide";
+        slide.innerHTML = buildSlideHtml(btn, label);
+        return slide;
+      });
+
+      slideEls.forEach((el) => wrapper.appendChild(el));
+    };
+
     modalEl.addEventListener("show.bs.modal", (event) => {
       const trigger = event.relatedTarget;
 
-      buildSlidesOnce();
+      const allTiles = getTiles();
+      if (!allTiles.length) return;
+
+      const key = computeKey(trigger);
+      const tilesForModal = filterTilesByKey(allTiles, key);
+      if (!tilesForModal.length) return;
+
+      // Which slide index inside THIS group?
+      let startIndex = 0;
+      if (trigger) {
+        const idx = tilesForModal.indexOf(trigger);
+        startIndex = idx >= 0 ? idx : 0;
+      }
+
+      // Rebuild slides ONLY when group changed, or if swiper isn't created yet
       const s = ensureSwiper();
       if (!s) return;
 
-      const idxAttr = trigger ? trigger.getAttribute(pageAttr) : "0";
-      const index = Number.parseInt(idxAttr || "0", 10);
+      if (currentKey !== key) {
+        rebuildSlides(tilesForModal);
+        currentKey = key;
+      }
 
       requestAnimationFrame(() => {
         s.update();
         if (s.navigation && typeof s.navigation.update === "function") s.navigation.update();
-        s.slideTo(Number.isFinite(index) ? index : 0, 0);
+        s.slideTo(startIndex, 0);
       });
     });
 
@@ -128,21 +158,21 @@
     });
   };
 
-  // Extras reader
+  // Extras reader (GROUPED by data-group)
   initReader({
     modalId: "extraReader",
     wrapperId: "hsExtrasWrapper",
     tileSelector: ".hs-extraTile",
     label: "Image",
-    pageAttr: "data-page"
+    groupAttr: "data-group"
   });
 
-  // Chapter page reader
+  // Chapter page reader (no grouping; keep all pages together)
   initReader({
     modalId: "pageReader",
     wrapperId: "hsPagesWrapper",
-    tileSelector: ".hs-pageTile[data-page]",
+    tileSelector: ".hs-pageTile[data-bs-target='#pageReader']",
     label: "Page",
-    pageAttr: "data-page"
+    groupAttr: null
   });
 })();
