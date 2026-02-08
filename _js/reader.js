@@ -65,23 +65,9 @@
         }
       });
 
-      // Bind once
-      if (nextBtn) {
-        nextBtn.addEventListener("click", (e) => {
-          if (!swiper) return;
-          e.preventDefault();
-          e.stopPropagation();
-          swiper.slideNext();
-        });
-      }
-      if (prevBtn) {
-        prevBtn.addEventListener("click", (e) => {
-          if (!swiper) return;
-          e.preventDefault();
-          e.stopPropagation();
-          swiper.slidePrev();
-        });
-      }
+      // NOTE:
+      // Do NOT add manual click handlers to nextBtn/prevBtn.
+      // Swiper navigation already binds them. Double-binding causes skipping.
 
       return swiper;
     };
@@ -100,7 +86,6 @@
     };
 
     const rebuildSlides = (tilesForModal) => {
-      // wipe DOM wrapper (safe, because Swiper can re-read)
       wrapper.innerHTML = "";
 
       const slideEls = tilesForModal.map((btn) => {
