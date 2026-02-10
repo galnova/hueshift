@@ -40,32 +40,19 @@
             <a class="nav-link" href="#dossiers">Dossiers</a>
           </li>
 
-          <!-- Chapters Dropdown -->
           <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="_chapters/chapters.html"
-              id="chaptersDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Chapters
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" id="chaptersDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Chapters</a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="chaptersDropdown">
-              <li>
-                <a class="dropdown-item" href="_chapters/chapters.html">
-                  All Chapters
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="_chapters/c-1.html">
-                  Chapter One
-                </a>
-              </li>
+              <li><a class="dropdown-item" href="_chapters/chapters.html">All Chapters</a></li>
+              <li><a class="dropdown-item" href="_chapters/c-1.html">Chapter One</a></li>
+              <li><a class="dropdown-item" href="_chapters/c-2.html">Chapter Two</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link" href="extras.html" aria-current="page">Extras</a></li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="extras.html" aria-current="page">Extras</a>
+          </li>
+
         </ul>
       </div>
     </nav>
@@ -82,7 +69,9 @@
         <a href="_chapters/chapters.html" class="btn btn-secondary">All chapters</a>
       </div>
     </div>
+
     <h2 class="hs-subtitle mt-2">Colour of Fate</h2>
+
     <p class="hs-blurb">
       The Ne'er-do-wells are highly skilled Mech pilots of the mech, Cidermayer.
       Their most recent mission will test the limits of their friendships and their fate.
@@ -90,18 +79,18 @@
   </section>
 
   <section class="container-fluid p-0 m-0 mb-5" id="featured">
-    <a href="_dossiers/llew.html" class="hs-feature">
-      <img src="_img/wide-hs-llew.jpg" alt="">
+    <a href="_dossiers/llew.html" class="hs-feature" data-feature="wrap" aria-label="Open dossier: Llewellyn">
+      <img src="_img/wide-hs-llew.jpg" alt="Featured character: Llewellyn" data-feature="img">
       <div class="hs-feature__overlay"></div>
 
       <div class="container hs-feature__content">
         <div class="hs-feature__kicker">FEATURED</div>
-        <div class="hs-feature__name">LLEWELLYN</div>
-        <div class="hs-feature__text">
+        <div class="hs-feature__name" data-feature="name">LLEWELLYN</div>
+        <div class="hs-feature__text" data-feature="text">
           The leader of the Ne'er-do-wells and main pilot of Cidermayer.
           This final mission may test the limits of their friendships and their fate.
         </div>
-        <div class="hs-feature__cta">Open dossier →</div>
+        <div class="hs-feature__cta" data-feature="cta">Open dossier →</div>
       </div>
     </a>
   </section>
@@ -119,37 +108,36 @@
           </a>
         </div>
 
-
         <div class="col-md-4">
-          <div class="hs-panel hs-panel--starlot">
+          <a href="_dossiers/star.html" class="hs-panel hs-panel--starlot">
             <div class="hs-panel-banner">The Gunner</div>
             <img src="_img/char-hs-star.png" alt="">
             <div class="hs-panel-label">STARLOT</div>
-          </div>
+          </a>
         </div>
 
         <div class="col-md-4">
-          <div class="hs-panel hs-panel--sadie">
+          <a href="_dossiers/sad.html" class="hs-panel hs-panel--sadie">
             <div class="hs-panel-banner">The Maverick</div>
             <img src="_img/char-hs-sad.png" alt="">
             <div class="hs-panel-label">SADIE</div>
-          </div>
+          </a>
         </div>
 
         <div class="col-md-4">
-          <div class="hs-panel hs-panel--blac">
+          <a href="_dossiers/blac.html" class="hs-panel hs-panel--blac">
             <div class="hs-panel-banner">The Brute</div>
             <img src="_img/char-hs-blac.png" alt="">
             <div class="hs-panel-label">BLAC</div>
-          </div>
+          </a>
         </div>
 
         <div class="col-md-4">
-          <div class="hs-panel hs-panel--rufus">
+          <a href="_dossiers/rufus.html" class="hs-panel hs-panel--rufus">
             <div class="hs-panel-banner">The Blonde Blade</div>
             <img src="_img/char-hs-rufus.png" alt="">
             <div class="hs-panel-label">RUFUS</div>
-          </div>
+          </a>
         </div>
 
         <div class="col-md-4">
