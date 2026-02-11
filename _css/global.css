@@ -291,15 +291,21 @@ footer .hs-sub{background-color:transparent}
   overflow:hidden;
 }
 
-.hs-feature img{
+.hs-feature img {
   width:100%;
   height:100%;
   object-fit:cover;
+  object-position:50% 50%;
   display:block;
-  transform:scale(1.02);
+  transform:scale(1.005);
   transition:transform .55s ease;
   position:relative;
   z-index:1;
+}
+
+.hs-feature[href*="rufus"] img,
+.hs-feature[href*="star"] img {
+  object-position:80% 80%;
 }
 
 .hs-feature:hover img{transform:scale(1.08)}
