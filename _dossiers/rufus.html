@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link href="../_css/global.css" rel="stylesheet">
+  <link href="../_css/chapters.css" rel="stylesheet">
 </head>
 
 <body class="hs-dark d-flex flex-column min-vh-100">
@@ -107,8 +109,88 @@
         </div>
       </div>
 
+    <section class="container pb-5 mt-4">
+    <div class="hs-panel-shell border border-light border-opacity-10 overflow-hidden">
+      <div class="p-3 p-md-4">
+        <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 ps-2 pt-0">
+          <div>
+            <h3 class="m-0">Rufus Illustrations</h3>
+          </div>
+
+          <!-- <a class="btn btn-outline-light btn-sm" href="" target="_blank" rel="noopener noreferrer">
+            Buy a print
+          </a> -->
+        </div>
+
+        <div class="row g-3 g-md-4 hs-extrasGrid mt-2 justify-content-center">
+          <div class="col-6 col-md-4 col-lg-3">
+            <button type="button" class="hs-pageTile hs-extraTile" data-group="set1" data-bs-toggle="modal" data-bs-target="#extraReader" data-full="../_img/_rufus/rufus-concept.jpg" aria-label="Open Rufus Concept">
+              <img src="../_img/_rufus/rufus-concept.jpg" alt="Rufus Concept" loading="lazy" decoding="async">
+              <span class="hs-pageNum">Rufus Concept</span>
+            </button>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <button type="button" class="hs-pageTile hs-extraTile" data-group="set1" data-bs-toggle="modal" data-bs-target="#extraReader" data-full="../_img/_rufus/char-hs-rufus-2.jpg" aria-label="Open Rufus Profile">
+              <img src="../_img/_rufus/char-hs-rufus-2.jpg" alt="Rufus Profile" loading="lazy" decoding="async">
+              <span class="hs-pageNum">Rufus - Profile</span>
+            </button>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <button type="button" class="hs-pageTile hs-extraTile" data-group="set1" data-bs-toggle="modal" data-bs-target="#extraReader" data-full="../_img/_rufus/rufus-Glade-sm.jpg" aria-label="Open Rufus Glade">
+              <img src="../_img/_rufus/rufus-Glade-sm.jpg" alt="Rufus Jump" loading="lazy" decoding="async">
+              <span class="hs-pageNum">Rufus - Glade</span>
+            </button>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <button type="button" class="hs-pageTile hs-extraTile" data-group="set1" data-bs-toggle="modal" data-bs-target="#extraReader" data-full="../_img/_rufus/Rufus-New.jpg" aria-label="Open Rufus Full">
+              <img src="../_img/_rufus/Rufus-New.jpg" alt="Rufus Full" loading="lazy" decoding="async">
+              <span class="hs-pageNum">Rufus - Full</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
     </div>
 
+  </div>
+
+  <div class="modal fade" id="extraReader" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down modal-xl modal-dialog-centered">
+      <div class="modal-content hs-readerModal border border-light border-opacity-10">
+        <div class="modal-header border-bottom border-light border-opacity-10">
+          <div class="d-flex flex-column">
+            <div class="text-uppercase small opacity-75 hs-kicker">Hue Shift</div>
+            <div class="fw-bold">Rufus</div>
+          </div>
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <div class="swiper hs-readerSwiper" aria-label="Extras">
+            <div class="swiper-wrapper" id="hsExtrasWrapper"></div>
+
+            <div class="hs-readerHud">
+              <div class="hs-readerPagination"></div>
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-outline-light btn-sm d-inline-flex align-items-center justify-content-center hs-nav hs-readerPrev" type="button" aria-label="Previous image">
+                  <span aria-hidden="true" class="hs-caret hs-caret--left"></span>
+                </button>
+                <button class="btn btn-outline-light btn-sm d-inline-flex align-items-center justify-content-center hs-nav hs-readerNext" type="button" aria-label="Next image">
+                  <span aria-hidden="true" class="hs-caret hs-caret--right"></span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -124,6 +206,8 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="../_js/global.js"></script>
+<script src="../_js/reader.js"></script>
 </body>
 </html>
