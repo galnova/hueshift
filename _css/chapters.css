@@ -60,7 +60,7 @@
 
 .hs-panel-shell {
   position: relative;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.10);
   background: linear-gradient(135deg, #360f0b 0%, #103b7c 100%);
