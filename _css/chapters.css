@@ -27,6 +27,10 @@
   --swiper-theme-color:rgba(255,255,255,0.9);
 }
 
+.hs-swiper .swiper-wrapper {
+  margin-bottom: 24px;
+}
+
 .hs-pagination{
   position:static;
   text-align:left;
