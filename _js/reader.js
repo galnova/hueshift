@@ -119,7 +119,8 @@
     wrapperId,
     tileSelector,
     label = "Image",
-    groupAttr = "data-group"
+    groupAttr = "data-group",
+    ignoreGroupFor = null
   }) => {
     const modalEl = document.getElementById(modalId);
     const wrapper = document.getElementById(wrapperId);
@@ -199,19 +200,32 @@
       if (typeof s.navigation.update === "function") s.navigation.update();
     };
 
+    const shouldIgnoreGroup = (trigger) => {
+      if (!ignoreGroupFor || !trigger) return false;
+      return ignoreGroupFor(trigger);
+    };
+
     const openFromTrigger = (trigger) => {
       const allTiles = getTiles();
       if (!allTiles.length) return;
 
-      const key = computeKey(trigger);
-      const tilesForModal = filterTilesByKey(allTiles, key);
-      if (!tilesForModal.length) return;
-
       const s = ensureSwiper();
       if (!s) return;
 
-      const startIndex = Math.max(0, tilesForModal.indexOf(trigger));
-      pendingIndex = startIndex;
+      let key = "__all__";
+      let tilesForModal = [];
+
+      if (shouldIgnoreGroup(trigger)) {
+        tilesForModal = allTiles.filter(ignoreGroupFor);
+        key = "__ignoregroup__";
+      } else {
+        key = computeKey(trigger);
+        tilesForModal = filterTilesByKey(allTiles, key);
+      }
+
+      if (!tilesForModal.length) return;
+
+      pendingIndex = Math.max(0, tilesForModal.indexOf(trigger));
 
       if (currentKey !== key) {
         rebuildSlides(tilesForModal);
@@ -263,12 +277,16 @@
     });
   };
 
+  const isYouTubeTile = (el) =>
+    String(el?.getAttribute("data-type") || "").toLowerCase() === "youtube";
+
   initReader({
     modalId: "extraReader",
     wrapperId: "hsExtrasWrapper",
     tileSelector: ".hs-extraTile",
     label: "Image",
-    groupAttr: "data-group"
+    groupAttr: "data-group",
+    ignoreGroupFor: isYouTubeTile
   });
 
   initReader({
@@ -276,6 +294,7 @@
     wrapperId: "hsPagesWrapper",
     tileSelector: ".hs-pageTile[data-bs-target='#pageReader']",
     label: "Page",
-    groupAttr: null
+    groupAttr: null,
+    ignoreGroupFor: null
   });
 })();
