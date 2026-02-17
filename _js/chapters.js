@@ -1,29 +1,45 @@
 (() => {
-  if (typeof Swiper === "undefined") return;
+  if (typeof Swiper !== "function") return;
 
-  const chapterSwiperEl = document.querySelector(".hs-swiper");
-  if (!chapterSwiperEl) return;
+  const swiperEl = document.querySelector(".hs-swiper");
+  if (!swiperEl) return;
 
-  const chapterSwiper = new Swiper(chapterSwiperEl, {
-    loop: false,
-    speed: 450,
-    spaceBetween: 14,
-    grabCursor: true,
-    keyboard: { enabled: true },
-    pagination: {
-      el: ".hs-pagination",
-      clickable: true
-    },
+  const jumpButtons = Array.from(document.querySelectorAll(".hs-jump"));
+
+  const swiper = new Swiper(swiperEl, {
+    speed: 500,
+    autoHeight: true,
     navigation: {
       nextEl: ".hs-next",
       prevEl: ".hs-prev"
+    },
+    on: {
+      init() {
+        setActiveButton(this.activeIndex);
+      },
+      slideChange() {
+        setActiveButton(this.activeIndex);
+      }
     }
   });
 
-  document.querySelectorAll("[data-hs-jump]").forEach((btn) => {
+  function setActiveButton(index) {
+    jumpButtons.forEach((btn, i) => {
+      if (i === index) {
+        btn.classList.remove("btn-outline-light");
+        btn.classList.add("btn-light", "active");
+      } else {
+        btn.classList.remove("btn-light", "active");
+        btn.classList.add("btn-outline-light");
+      }
+    });
+  }
+
+  jumpButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const index = Number.parseInt(btn.getAttribute("data-hs-jump") || "0", 10);
-      if (!Number.isNaN(index)) chapterSwiper.slideTo(index);
+      const index = parseInt(btn.dataset.hsJump, 10);
+      swiper.slideTo(index);
     });
   });
+
 })();
