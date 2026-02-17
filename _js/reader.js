@@ -286,7 +286,7 @@
     tileSelector: ".hs-extraTile",
     label: "Image",
     groupAttr: "data-group",
-    ignoreGroupFor: isYouTubeTile
+    ignoreGroupFor: null
   });
 
   initReader({
