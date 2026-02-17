@@ -10,7 +10,8 @@
   const stopYouTubeIframes = (wrapper) => {
     if (!wrapper) return;
     wrapper.querySelectorAll("iframe[data-yt='1']").forEach((ifr) => {
-      ifr.removeAttribute("src");
+      const src = ifr.getAttribute("src");
+      if (src) ifr.setAttribute("src", src);
     });
   };
 
@@ -51,52 +52,26 @@
     return m ? m[1] : "";
   };
 
-  const normalizeYouTubeEmbedSrc = (raw) => {
-    const input = String(raw || "").trim();
-    if (!input) return "";
-
-    if (/^https?:\/\//i.test(input)) {
-      try {
-        const u = new URL(input);
-        const host = (u.hostname || "").replace(/^www\./, "");
-
-        if (host === "youtube.com" || host === "m.youtube.com") u.hostname = "www.youtube.com";
-
-        if (u.pathname.startsWith("/embed/")) {
-          const sp = u.searchParams;
-          if (!sp.has("rel")) sp.set("rel", "0");
-          if (!sp.has("modestbranding")) sp.set("modestbranding", "1");
-          if (!sp.has("playsinline")) sp.set("playsinline", "1");
-          sp.delete("autoplay");
-          return u.toString();
-        }
-      } catch (_e) {}
-    }
-
-    const id = getYouTubeId(input);
-    if (!id) return "";
-    return `https://www.youtube.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1`;
-  };
-
   const buildSlideHtml = (btn, fallbackLabel) => {
     const type = (btn.getAttribute("data-type") || "image").toLowerCase();
 
     if (type === "youtube") {
       const vidRaw = btn.getAttribute("data-video") || "";
+      const vid = getYouTubeId(vidRaw);
       const title = btn.getAttribute("aria-label") || "YouTube video";
-      const dataSrc = normalizeYouTubeEmbedSrc(vidRaw);
+      const isVertical = (btn.getAttribute("data-aspect") || "").toLowerCase() === "9x16";
+
+      const src = vid
+        ? `https://www.youtube.com/embed/${encodeURIComponent(vid)}?rel=0&modestbranding=1&playsinline=1`
+        : "";
 
       return (
         `<div class="hs-pageFrame">` +
-        `<div class="ratio ratio-16x9 w-100">` +
+        `<div class="ratio ${isVertical ? "ratio-9x16" : "ratio-16x9"} w-100">` +
         `<iframe data-yt="1" ` +
-        `class="nuke" ` +
-        `width="100%" height="305" ` +
-        `data-src="${escHtml(dataSrc)}" ` +
-        `src="" ` +
+        `src="${escHtml(src)}" ` +
         `title="${escHtml(title)}" ` +
-        `frameborder="0" ` +
-        `allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ` +
+        `allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ` +
         `allowfullscreen></iframe>` +
         `</div>` +
         `</div>`
@@ -136,11 +111,10 @@
     let swiper = null;
     let currentKey = null;
 
-    const ensureSwiper = () => {
-      if (swiper) return swiper;
+    const createSwiper = () => {
       if (typeof Swiper !== "function") return null;
 
-      swiper = new Swiper(swiperEl, {
+      const s = new Swiper(swiperEl, {
         loop: false,
         slidesPerView: 1,
         spaceBetween: 16,
@@ -155,15 +129,16 @@
         navigation: { nextEl: nextBtn, prevEl: prevBtn }
       });
 
-      swiper.on("slideChange", () => {
-        stopYouTubeIframes(wrapper);
-        const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
-        if (active) {
-          const ds = active.getAttribute("data-src") || "";
-          if (ds) active.setAttribute("src", ds);
-        }
-      });
+      s.on("slideChange", () => stopYouTubeIframes(wrapper));
+      return s;
+    };
 
+    const resetSwiper = () => {
+      if (swiper) {
+        try { swiper.destroy(true, true); } catch (_e) {}
+        swiper = null;
+      }
+      swiper = createSwiper();
       return swiper;
     };
 
@@ -189,6 +164,8 @@
         slide.innerHTML = buildSlideHtml(btn, label);
         wrapper.appendChild(slide);
       });
+
+      resetSwiper();
     };
 
     const openFromTrigger = (trigger) => {
@@ -199,49 +176,32 @@
       const tilesForModal = filterTilesByKey(allTiles, key);
       if (!tilesForModal.length) return;
 
-      const s = ensureSwiper();
-      if (!s) return;
-
       const startIndex = Math.max(0, tilesForModal.indexOf(trigger));
 
-      if (currentKey !== key) {
+      if (currentKey !== key || !swiper) {
         rebuildSlides(tilesForModal);
         currentKey = key;
+      } else {
+        swiper.update();
+        if (swiper.navigation && typeof swiper.navigation.update === "function") swiper.navigation.update();
       }
 
       requestAnimationFrame(() => {
-        s.update();
-        if (s.navigation && typeof s.navigation.update === "function") s.navigation.update();
-        s.slideTo(startIndex, 0);
-
-        if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
-          bootstrap.Modal.getOrCreateInstance(modalEl).show();
-        }
+        swiper.update();
+        if (swiper.navigation && typeof swiper.navigation.update === "function") swiper.navigation.update();
+        swiper.slideTo(startIndex, 0);
       });
+
+      if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
+        bootstrap.Modal.getOrCreateInstance(modalEl).show();
+      }
     };
 
-    document.addEventListener(
-      "click",
-      (e) => {
-        const tile = e.target.closest(tileSelector);
-        if (!tile) return;
-
-        e.preventDefault();
-        e.stopPropagation();
-        if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
-
-        openFromTrigger(tile);
-      },
-      true
-    );
-
-    modalEl.addEventListener("shown.bs.modal", () => {
-      stopYouTubeIframes(wrapper);
-      const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
-      if (active) {
-        const ds = active.getAttribute("data-src") || "";
-        if (ds) active.setAttribute("src", ds);
-      }
+    document.addEventListener("click", (e) => {
+      const tile = e.target.closest(tileSelector);
+      if (!tile) return;
+      e.preventDefault();
+      openFromTrigger(tile);
     });
 
     modalEl.addEventListener("hidden.bs.modal", () => {
