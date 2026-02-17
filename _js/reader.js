@@ -1,7 +1,4 @@
 (() => {
-  if (typeof Swiper !== "function") return;
-  if (typeof bootstrap === "undefined") return;
-
   const escHtml = (s) =>
     String(s ?? "")
       .replace(/&/g, "&amp;")
@@ -10,7 +7,102 @@
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
 
+  const stopYouTubeIframes = (wrapper) => {
+    if (!wrapper) return;
+    wrapper.querySelectorAll("iframe[data-yt='1']").forEach((ifr) => {
+      ifr.removeAttribute("src");
+    });
+  };
+
+  const getYouTubeId = (input) => {
+    const raw = String(input || "").trim();
+    if (!raw) return "";
+
+    if (/^[a-zA-Z0-9_-]{11}$/.test(raw)) return raw;
+
+    try {
+      const u = new URL(raw, window.location.href);
+      const host = (u.hostname || "").replace(/^www\./, "");
+
+      if (host === "youtu.be") {
+        const id = (u.pathname || "").split("/").filter(Boolean)[0] || "";
+        return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : "";
+      }
+
+      if (host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) {
+        const p = u.pathname || "";
+
+        if (p.startsWith("/shorts/")) {
+          const id = p.split("/shorts/")[1]?.split("/")[0] || "";
+          return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : "";
+        }
+
+        if (p.startsWith("/embed/")) {
+          const id = p.split("/embed/")[1]?.split("/")[0] || "";
+          return /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : "";
+        }
+
+        const v = u.searchParams.get("v") || "";
+        return /^[a-zA-Z0-9_-]{11}$/.test(v) ? v : "";
+      }
+    } catch (_e) {}
+
+    const m = raw.match(/(?:shorts\/|embed\/|v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    return m ? m[1] : "";
+  };
+
+  const normalizeYouTubeEmbedSrc = (raw) => {
+    const input = String(raw || "").trim();
+    if (!input) return "";
+
+    if (/^https?:\/\//i.test(input)) {
+      try {
+        const u = new URL(input);
+        const host = (u.hostname || "").replace(/^www\./, "");
+
+        if (host === "youtube.com" || host === "m.youtube.com") u.hostname = "www.youtube.com";
+
+        if (u.pathname.startsWith("/embed/")) {
+          const sp = u.searchParams;
+          if (!sp.has("rel")) sp.set("rel", "0");
+          if (!sp.has("modestbranding")) sp.set("modestbranding", "1");
+          if (!sp.has("playsinline")) sp.set("playsinline", "1");
+          sp.delete("autoplay");
+          return u.toString();
+        }
+      } catch (_e) {}
+    }
+
+    const id = getYouTubeId(input);
+    if (!id) return "";
+    return `https://www.youtube.com/embed/${encodeURIComponent(id)}?rel=0&modestbranding=1&playsinline=1`;
+  };
+
   const buildSlideHtml = (btn, fallbackLabel) => {
+    const type = (btn.getAttribute("data-type") || "image").toLowerCase();
+
+    if (type === "youtube") {
+      const vidRaw = btn.getAttribute("data-video") || "";
+      const title = btn.getAttribute("aria-label") || "YouTube video";
+      const dataSrc = normalizeYouTubeEmbedSrc(vidRaw);
+
+      return (
+        `<div class="hs-pageFrame">` +
+        `<div class="ratio ratio-16x9 w-100">` +
+        `<iframe data-yt="1" ` +
+        `class="nuke" ` +
+        `width="100%" height="305" ` +
+        `data-src="${escHtml(dataSrc)}" ` +
+        `src="" ` +
+        `title="${escHtml(title)}" ` +
+        `frameborder="0" ` +
+        `allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ` +
+        `allowfullscreen></iframe>` +
+        `</div>` +
+        `</div>`
+      );
+    }
+
     const thumbImg = btn.querySelector("img");
     const fullSrc = btn.getAttribute("data-full") || (thumbImg ? thumbImg.getAttribute("src") : "");
     const alt = thumbImg ? (thumbImg.getAttribute("alt") || fallbackLabel) : fallbackLabel;
@@ -27,7 +119,7 @@
     wrapperId,
     tileSelector,
     label = "Image",
-    groupAttr = "data-group" // set to null to disable grouping
+    groupAttr = "data-group"
   }) => {
     const modalEl = document.getElementById(modalId);
     const wrapper = document.getElementById(wrapperId);
@@ -42,10 +134,11 @@
     const pagEl = modalEl.querySelector(".hs-readerPagination");
 
     let swiper = null;
-    let currentKey = null; // group key (or "__all__")
+    let currentKey = null;
 
     const ensureSwiper = () => {
       if (swiper) return swiper;
+      if (typeof Swiper !== "function") return null;
 
       swiper = new Swiper(swiperEl, {
         loop: false,
@@ -59,15 +152,17 @@
           type: "custom",
           renderCustom: (_s, current, total) => `${label} ${current} / ${total}`
         },
-        navigation: {
-          nextEl: nextBtn,
-          prevEl: prevBtn
-        }
+        navigation: { nextEl: nextBtn, prevEl: prevBtn }
       });
 
-      // NOTE:
-      // Do NOT add manual click handlers to nextBtn/prevBtn.
-      // Swiper navigation already binds them. Double-binding causes skipping.
+      swiper.on("slideChange", () => {
+        stopYouTubeIframes(wrapper);
+        const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
+        if (active) {
+          const ds = active.getAttribute("data-src") || "";
+          if (ds) active.setAttribute("src", ds);
+        }
+      });
 
       return swiper;
     };
@@ -88,19 +183,15 @@
     const rebuildSlides = (tilesForModal) => {
       wrapper.innerHTML = "";
 
-      const slideEls = tilesForModal.map((btn) => {
+      tilesForModal.forEach((btn) => {
         const slide = document.createElement("div");
         slide.className = "swiper-slide";
         slide.innerHTML = buildSlideHtml(btn, label);
-        return slide;
+        wrapper.appendChild(slide);
       });
-
-      slideEls.forEach((el) => wrapper.appendChild(el));
     };
 
-    modalEl.addEventListener("show.bs.modal", (event) => {
-      const trigger = event.relatedTarget;
-
+    const openFromTrigger = (trigger) => {
       const allTiles = getTiles();
       if (!allTiles.length) return;
 
@@ -108,16 +199,10 @@
       const tilesForModal = filterTilesByKey(allTiles, key);
       if (!tilesForModal.length) return;
 
-      // Which slide index inside THIS group?
-      let startIndex = 0;
-      if (trigger) {
-        const idx = tilesForModal.indexOf(trigger);
-        startIndex = idx >= 0 ? idx : 0;
-      }
-
-      // Rebuild slides ONLY when group changed, or if swiper isn't created yet
       const s = ensureSwiper();
       if (!s) return;
+
+      const startIndex = Math.max(0, tilesForModal.indexOf(trigger));
 
       if (currentKey !== key) {
         rebuildSlides(tilesForModal);
@@ -128,22 +213,44 @@
         s.update();
         if (s.navigation && typeof s.navigation.update === "function") s.navigation.update();
         s.slideTo(startIndex, 0);
+
+        if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
+          bootstrap.Modal.getOrCreateInstance(modalEl).show();
+        }
       });
-    });
+    };
+
+    document.addEventListener(
+      "click",
+      (e) => {
+        const tile = e.target.closest(tileSelector);
+        if (!tile) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === "function") e.stopImmediatePropagation();
+
+        openFromTrigger(tile);
+      },
+      true
+    );
 
     modalEl.addEventListener("shown.bs.modal", () => {
-      if (!swiper) return;
-      swiper.update();
-      if (swiper.navigation && typeof swiper.navigation.update === "function") swiper.navigation.update();
+      stopYouTubeIframes(wrapper);
+      const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
+      if (active) {
+        const ds = active.getAttribute("data-src") || "";
+        if (ds) active.setAttribute("src", ds);
+      }
     });
 
     modalEl.addEventListener("hidden.bs.modal", () => {
+      stopYouTubeIframes(wrapper);
       if (!swiper) return;
       swiper.slideTo(0, 0);
     });
   };
 
-  // Extras reader (GROUPED by data-group)
   initReader({
     modalId: "extraReader",
     wrapperId: "hsExtrasWrapper",
@@ -152,7 +259,6 @@
     groupAttr: "data-group"
   });
 
-  // Chapter page reader (no grouping; keep all pages together)
   initReader({
     modalId: "pageReader",
     wrapperId: "hsPagesWrapper",
