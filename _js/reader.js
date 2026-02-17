@@ -133,6 +133,13 @@
     const nextBtn = modalEl.querySelector(".hs-readerNext");
     const prevBtn = modalEl.querySelector(".hs-readerPrev");
     const pagEl = modalEl.querySelector(".hs-readerPagination");
+    const hudEl = modalEl.querySelector(".hs-readerHud");
+
+    const updateHudVisibility = () => {
+      if (!hudEl) return;
+      const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
+      hudEl.style.display = active ? "none" : "";
+    };
 
     let swiper = null;
     let currentKey = null;
@@ -164,6 +171,7 @@
           const ds = active.getAttribute("data-src") || "";
           if (ds) active.setAttribute("src", ds);
         }
+        updateHudVisibility();
       });
 
       return swiper;
@@ -267,6 +275,8 @@
           const ds = active.getAttribute("data-src") || "";
           if (ds) active.setAttribute("src", ds);
         }
+
+        updateHudVisibility();
       });
     });
 
@@ -274,6 +284,7 @@
       stopYouTubeIframes(wrapper);
       if (!swiper) return;
       swiper.slideTo(0, 0);
+      updateHudVisibility();
     });
   };
 
@@ -286,7 +297,7 @@
     tileSelector: ".hs-extraTile",
     label: "Image",
     groupAttr: "data-group",
-    ignoreGroupFor: null
+    ignoreGroupFor: isYouTubeTile
   });
 
   initReader({
