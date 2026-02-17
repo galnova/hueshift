@@ -440,6 +440,10 @@ footer .hs-sub{background-color:transparent}
   margin-bottom:24px;
 }
 
+.hs-readerModal.hs-hideHud .hs-readerHud {
+  display: none !important;
+}
+
 @media (hover:none) and (pointer:coarse){
   .hs-panel img{filter:none}
 }
