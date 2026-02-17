@@ -90,10 +90,6 @@ footer .hs-sub{background-color:transparent}
   backdrop-filter:blur(10px);
 }
 
-/* =========================
-   Tiles
-   ========================= */
-
 .hs-extraTile{width:100%}
 
 .hs-extraTile img{
@@ -107,7 +103,6 @@ footer .hs-sub{background-color:transparent}
   background:transparent;
 }
 
-/* Chapter page tiles should match extras tile image behavior */
 .hs-pageTile{
   border:0;
   padding:8px;
@@ -147,11 +142,6 @@ footer .hs-sub{background-color:transparent}
 }
 
 .hs-extraTile .hs-tileLabel{display:none}
-
-/* =========================
-   Reader modal styling
-   Make #pageReader look EXACTLY like #extraReader
-   ========================= */
 
 :is(#extraReader,#pageReader) .modal-content{
   background:rgba(10,10,12,0.92);
@@ -223,7 +213,6 @@ footer .hs-sub{background-color:transparent}
   z-index:50;
   gap:10px;
   pointer-events:none;
-
   background:rgba(0,0,0,0.45);
   border:1px solid rgba(255,255,255,0.10);
   border-radius:14px;
@@ -232,11 +221,6 @@ footer .hs-sub{background-color:transparent}
 }
 
 :is(#extraReader,#pageReader) .hs-readerHud > *{pointer-events:auto}
-
-/* =========================
-   Mobile: force slide chain to true full height
-   (this is what fixes .swiper-slide-active not filling)
-   ========================= */
 
 @media (max-width: 767.98px) {
   :is(#extraReader, #pageReader) .modal-content{
@@ -274,13 +258,9 @@ footer .hs-sub{background-color:transparent}
 
   :is(#extraReader, #pageReader) .hs-pageImg{
     max-width:100%;
-    max-height:calc(100vh - 140px); /* adjust if your header/HUD is taller */
+    max-height:calc(100vh - 140px);
   }
 }
-
-/* =========================
-   Feature + other site styles (unchanged)
-   ========================= */
 
 .hs-feature{
   position:relative;
@@ -456,6 +436,10 @@ footer .hs-sub{background-color:transparent}
   filter:none;
 }
 
+.hs-swiper .swiper-wrapper{
+  margin-bottom:24px;
+}
+
 @media (hover:none) and (pointer:coarse){
   .hs-panel img{filter:none}
 }
@@ -535,7 +519,6 @@ footer .hs-sub{background-color:transparent}
   height:100%;
   object-fit:cover;
   object-position: top center;
-    /* object-position: 50% 0%; */
   display:block;
   transform:scale(1.02);
 }
@@ -690,11 +673,6 @@ footer .hs-sub{background-color:transparent}
   color:#000;
 }
 
-/* =========================
-   Fix dropdown behind content
-   Keep modal ABOVE dropdown
-   ========================= */
-
 header.hs-glass{
   position:relative;
   z-index:4000;
@@ -710,7 +688,6 @@ header.hs-glass .dropdown-menu{
   z-index:4200;
 }
 
-/* Bootstrap modal defaults are already high, but we pin them above header */
 .modal{
   position:fixed;
   z-index:5000;
