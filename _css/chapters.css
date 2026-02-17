@@ -101,6 +101,8 @@
   z-index:1;
 }
 
+.ratio-9x16{--bs-aspect-ratio:177.7778%;}
+
 @media(prefers-reduced-motion:reduce){
   .hs-panel-shell::before{
     opacity:.7;

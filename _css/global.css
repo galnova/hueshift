@@ -444,6 +444,19 @@ footer .hs-sub{background-color:transparent}
   .hs-panel img{filter:none}
 }
 
+.hs-subPage-header .btn.active,
+.hs-subPage-header .btn.hover {
+    background: #5b2220;
+    color: #fff;
+    border: solid 1px #5b2220;
+}
+
+.hs-subPage-header .btn:focus-visible,
+.hs-subPage-header .btn:active {
+  background: #fff;
+  color: #000;
+}
+
 .hs-panel-label{
   position:absolute;
   bottom:24px;
@@ -568,9 +581,13 @@ footer .hs-sub{background-color:transparent}
   display:flex;
   justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
+  flex-wrap: wrap-reverse;
   gap:12px;
   margin-bottom:24px;
+}
+
+.hs-subPage-header > .btn:first-of-type{
+  margin-left:auto;
 }
 
 .hs-profileFrame,
