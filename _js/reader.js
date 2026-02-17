@@ -135,6 +135,7 @@
 
     let swiper = null;
     let currentKey = null;
+    let pendingIndex = 0;
 
     const ensureSwiper = () => {
       if (swiper) return swiper;
@@ -191,6 +192,13 @@
       });
     };
 
+    const rebindNav = (s) => {
+      if (!s || !s.navigation) return;
+      if (typeof s.navigation.destroy === "function") s.navigation.destroy();
+      if (typeof s.navigation.init === "function") s.navigation.init();
+      if (typeof s.navigation.update === "function") s.navigation.update();
+    };
+
     const openFromTrigger = (trigger) => {
       const allTiles = getTiles();
       if (!allTiles.length) return;
@@ -203,27 +211,16 @@
       if (!s) return;
 
       const startIndex = Math.max(0, tilesForModal.indexOf(trigger));
+      pendingIndex = startIndex;
 
       if (currentKey !== key) {
         rebuildSlides(tilesForModal);
         currentKey = key;
       }
 
-      requestAnimationFrame(() => {
-        s.update();
-
-        if (s.navigation) {
-          if (typeof s.navigation.destroy === "function") s.navigation.destroy();
-          if (typeof s.navigation.init === "function") s.navigation.init();
-          if (typeof s.navigation.update === "function") s.navigation.update();
-        }
-
-        s.slideTo(startIndex, 0);
-
-        if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
-          bootstrap.Modal.getOrCreateInstance(modalEl).show();
-        }
-      });
+      if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
+        bootstrap.Modal.getOrCreateInstance(modalEl).show();
+      }
     };
 
     document.addEventListener(
@@ -242,12 +239,21 @@
     );
 
     modalEl.addEventListener("shown.bs.modal", () => {
-      stopYouTubeIframes(wrapper);
-      const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
-      if (active) {
-        const ds = active.getAttribute("data-src") || "";
-        if (ds) active.setAttribute("src", ds);
-      }
+      const s = ensureSwiper();
+      if (!s) return;
+
+      requestAnimationFrame(() => {
+        s.update();
+        rebindNav(s);
+        s.slideTo(pendingIndex, 0);
+
+        stopYouTubeIframes(wrapper);
+        const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
+        if (active) {
+          const ds = active.getAttribute("data-src") || "";
+          if (ds) active.setAttribute("src", ds);
+        }
+      });
     });
 
     modalEl.addEventListener("hidden.bs.modal", () => {
