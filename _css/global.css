@@ -74,10 +74,14 @@ footer .hs-sub{background-color:transparent}
 }
 
 .hs-subtitle{
-  text-transform:uppercase;
-  letter-spacing:0.25em;
-  font-size:0.9rem;
-  opacity:0.65;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.9rem;
+    line-height: 1.5em;
+    padding: 10px 5px;
+    opacity: 0.65;
+    width: fit-content;
+    background: #000;
 }
 
 .hs-blurb{
@@ -104,14 +108,15 @@ footer .hs-sub{background-color:transparent}
 }
 
 .hs-pageTile{
-  border:0;
-  padding:8px;
-  padding: 10px 8px 8px 8px;
-  color:#fff;
-  background:#051937;
-  width:100%;
-  display:block;
-  text-align:center;
+    border: 0;
+    padding: 8px;
+    padding: 10px 8px 8px 8px;
+    color: #fff;
+    background: #051937;
+    width: 100%;
+    display: block;
+    text-align: center;
+    border: solid 1px #6b5757;
 }
 
 .hs-pageTile img{
