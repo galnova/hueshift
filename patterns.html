@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hue Shift — Pattern Library</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="_css/global.css">
+  <link rel="stylesheet" href="_css/chapters.css">
+  <link rel="stylesheet" href="_css/patterns.css">
+</head>
+<body>
+
+<!-- ── Top nav ── -->
+<nav class="pl-topnav">
+  <a href="index.html" class="pl-topnav-home">Hue Shift</a>
+  <span class="pl-topnav-sep">›</span>
+  <span class="pl-topnav-current">Pattern Library</span>
+</nav>
+
+<div class="pl-shell">
+
+  <h1 class="pl-page-title">Design System &amp; Pattern Library</h1>
+  <p class="pl-page-desc">Visual tokens, typographic styles, and component inventory for Hue Shift.</p>
+
+  <!-- ══════════════════════════════════════
+       COLOR SYSTEM
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Color System</h2>
+
+    <span class="pl-sublabel">Brand &amp; Background Tokens</span>
+    <div class="pl-swatches">
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--dark"></div>
+        <span class="pl-swatch-name">Dark BG</span>
+        <span class="pl-swatch-val">#0f0f12</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--navy"></div>
+        <span class="pl-swatch-name">Navy</span>
+        <span class="pl-swatch-val">#051937</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--red"></div>
+        <span class="pl-swatch-name">Panel Red</span>
+        <span class="pl-swatch-val">#a32a1e</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--maroon"></div>
+        <span class="pl-swatch-name">Active Maroon</span>
+        <span class="pl-swatch-val">#5b2220</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--purple"></div>
+        <span class="pl-swatch-name">Btn Primary</span>
+        <span class="pl-swatch-val">#0f0c3b</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--gold"></div>
+        <span class="pl-swatch-name">Gold Accent</span>
+        <span class="pl-swatch-val">#ffcd29</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--offwhite"></div>
+        <span class="pl-swatch-name">Light Text</span>
+        <span class="pl-swatch-val">#f2f2f2</span>
+      </div>
+    </div>
+
+    <span class="pl-sublabel">Surface &amp; Alpha Tokens</span>
+    <div class="pl-swatches">
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--glass"></div>
+        <span class="pl-swatch-name">Glass BG</span>
+        <span class="pl-swatch-val">rgba(15,15,18,.62)</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--dossier"></div>
+        <span class="pl-swatch-name">Dossier BG</span>
+        <span class="pl-swatch-val">rgba(0,0,0,.50)</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--panel-shell"></div>
+        <span class="pl-swatch-name">Panel Shell</span>
+        <span class="pl-swatch-val">rgba(0,0,0,.25)</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-swatch pl-swatch--border"></div>
+        <span class="pl-swatch-name">Border Alpha</span>
+        <span class="pl-swatch-val">rgba(255,255,255,.20)</span>
+      </div>
+    </div>
+
+    <span class="pl-sublabel">Gradients</span>
+    <div class="pl-swatches">
+      <div class="pl-swatch-item">
+        <div class="pl-grad-swatch pl-grad--bg"></div>
+        <span class="pl-swatch-name">Body Background</span>
+        <span class="pl-swatch-val">Animated · 32s loop</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-grad-swatch pl-grad--panel"></div>
+        <span class="pl-swatch-name">Panel Shell</span>
+        <span class="pl-swatch-val">135° · red→blue</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-grad-swatch pl-grad--overlay"></div>
+        <span class="pl-swatch-name">Feature Overlay</span>
+        <span class="pl-swatch-val">Orange-right + grey-top</span>
+      </div>
+      <div class="pl-swatch-item">
+        <div class="pl-grad-swatch pl-grad--rainbow"></div>
+        <span class="pl-swatch-name">Rainbow Border</span>
+        <span class="pl-swatch-val">135° · mask-composite</span>
+      </div>
+    </div>
+
+    <hr class="pl-divider">
+    <span class="pl-sublabel">WCAG 2.1 Contrast Ratios</span>
+    <table class="pl-contrast-table">
+      <thead>
+        <tr>
+          <th>Foreground</th>
+          <th>Background</th>
+          <th>Ratio</th>
+          <th>AA Normal</th>
+          <th>AA Large</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pl-color-dot pl-dot--offwhite"></span>#f2f2f2 text</td>
+          <td><span class="pl-color-dot pl-dot--dark"></span>#0f0f12 body bg</td>
+          <td>18.4:1</td>
+          <td class="pl-pass">Pass</td>
+          <td class="pl-pass">Pass</td>
+        </tr>
+        <tr>
+          <td><span class="pl-color-dot pl-dot--white"></span>#fff text</td>
+          <td><span class="pl-color-dot pl-dot--purple"></span>#0f0c3b btn-primary</td>
+          <td>14.9:1</td>
+          <td class="pl-pass">Pass</td>
+          <td class="pl-pass">Pass</td>
+        </tr>
+        <tr>
+          <td><span class="pl-color-dot pl-dot--white"></span>#fff text</td>
+          <td><span class="pl-color-dot pl-dot--red"></span>#a32a1e panel red</td>
+          <td>4.8:1</td>
+          <td class="pl-pass">Pass</td>
+          <td class="pl-pass">Pass</td>
+        </tr>
+        <tr>
+          <td><span class="pl-color-dot pl-dot--gold"></span>#ffcd29 gold</td>
+          <td><span class="pl-color-dot pl-dot--black"></span>#000 text bg</td>
+          <td>12.5:1</td>
+          <td class="pl-pass">Pass</td>
+          <td class="pl-pass">Pass</td>
+        </tr>
+        <tr>
+          <td><span class="pl-color-dot pl-dot--white"></span>#fff text</td>
+          <td><span class="pl-color-dot pl-dot--maroon"></span>#5b2220 maroon active</td>
+          <td>7.2:1</td>
+          <td class="pl-pass">Pass</td>
+          <td class="pl-pass">Pass</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       TYPOGRAPHY
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Typography</h2>
+
+    <span class="pl-sublabel">Typeface · System UI / Sizes · fluid with clamp()</span>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--title">Display</span>
+      </div>
+      <span class="pl-type-spec">.hs-title
+clamp(3rem, 6vw, 5rem)
+fw 800
+Homepage hero</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--heroname">NAME</span>
+      </div>
+      <span class="pl-type-spec">.hs-heroName
+clamp(2.2rem, 4vw, 3.4rem)
+fw 900 · uppercase · ls .12em
+Hero frame character name</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--feature-name">Feature Name</span>
+      </div>
+      <span class="pl-type-spec">.hs-feature__name
+clamp(2rem, 4vw, 3.2rem)
+fw 900 · color #ffcd29
+ls .06em · on #000 bg</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--subtitle">Subtitle Label</span>
+      </div>
+      <span class="pl-type-spec">.hs-subtitle
+0.9rem · uppercase
+ls 0.25em · opacity .65
+bg #000 · padding 10px 5px</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--sub">SECTION LABEL</span>
+      </div>
+      <span class="pl-type-spec">.hs-sub
+0.8rem · ls 0.2em
+bg #000 · pad 3px 5px 4px
+Transparent in footer</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live">
+        <span class="pl-specimen--logo">HUE SHIFT</span>
+      </div>
+      <span class="pl-type-spec">.hs-logo
+ls 0.3em · fw 700
+Brand wordmark · nav + footer</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live">
+        <span class="pl-specimen--kicker">Kicker / Chapter label text</span>
+      </div>
+      <span class="pl-type-spec">.hs-kicker
+ls 0.18em
+Reader modals · chapter headers</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--feature-kicker">FEATURED EPISODE</span>
+      </div>
+      <span class="pl-type-spec">.hs-feature__kicker
+0.75rem · ls .28em · fw 700
+opacity .75 · on dark banner</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--feature-cta">Read Now →</span>
+      </div>
+      <span class="pl-type-spec">.hs-feature__cta
+.85rem · uppercase · ls .14em
+fw 800 · bg #000 inline</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--panel-label">PILOT NAME</span>
+      </div>
+      <span class="pl-type-spec">.hs-panel-label
+1.2rem · fw 900 · uppercase
+ls .20em · bg #000
+Absolute bottom-left of panel</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live">
+        <span class="pl-specimen--dossier-label">Callsign</span>
+      </div>
+      <span class="pl-type-spec">.hs-dossier__label
+0.75rem · fw 800 · ls .22em
+opacity .70 · dossier grid key</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live">
+        <span class="pl-specimen--dossier-value">Squadron Leader, First Division</span>
+      </div>
+      <span class="pl-type-spec">.hs-dossier__value
+Inherited size · lh 1.6
+opacity .92 · dossier grid value</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live">
+        <p class="pl-specimen--blurb">Body blurb — content description paragraph constrained for comfortable reading width in dark contexts.</p>
+      </div>
+      <span class="pl-type-spec">.hs-blurb
+max-width 520px
+opacity .85 on dark bg
+Inherited size + line-height</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live on-dark">
+        <span class="pl-specimen--chip">Combat Specialist</span>
+      </div>
+      <span class="pl-type-spec">.hs-chip text
+0.72rem · fw 800
+uppercase · ls .18em</span>
+    </div>
+
+    <div class="pl-type-row">
+      <div class="pl-type-live">
+        <span class="pl-specimen--panel-banner">PILOT DOSSIER</span>
+      </div>
+      <span class="pl-type-spec">.hs-panel-banner
+fw 900 · uppercase · ls .22em
+bg rgba(0,0,0,.85)
+Absolute top of .hs-panel</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       BUTTONS & ACTIONS
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Buttons &amp; Actions</h2>
+
+    <span class="pl-sublabel">Primary &amp; Secondary Actions</span>
+    <div class="pl-dark-preview-sm">
+      <div class="pl-row">
+        <div class="pl-cell">
+          <a href="#" class="btn btn-primary">Latest Chapter</a>
+          <span class="pl-cell-label">.btn-primary<br>bg #0f0c3b · border #fff · color #fff</span>
+        </div>
+        <div class="pl-cell">
+          <a href="#" class="btn btn-secondary">All Chapters</a>
+          <span class="pl-cell-label">.btn-secondary<br>bg #fff · border #fff · color #000</span>
+        </div>
+        <div class="pl-cell">
+          <a href="#" class="btn btn-secondary">Back Home</a>
+          <span class="pl-cell-label">.btn-secondary<br>Secondary nav action</span>
+        </div>
+      </div>
+    </div>
+
+    <span class="pl-sublabel">Chapter Jump Buttons</span>
+    <div class="pl-dark-preview-sm">
+      <div class="pl-row">
+        <div class="pl-cell">
+          <button class="btn btn-sm btn-outline-light rounded-pill">Ch 1</button>
+          <span class="pl-cell-label">.btn-sm.btn-outline-light<br>.rounded-pill · chapter nav</span>
+        </div>
+        <div class="pl-cell">
+          <button class="btn btn-sm btn-outline-light rounded-pill">Ch 2</button>
+          <span class="pl-cell-label">.hs-jump · data-hs-jump="n"<br>panel-shell header row</span>
+        </div>
+        <div class="pl-cell">
+          <a href="#" class="btn btn-outline-light btn-sm">YouTube Shorts</a>
+          <span class="pl-cell-label">.btn-outline-light.btn-sm<br>External link in panel header</span>
+        </div>
+      </div>
+    </div>
+
+    <span class="pl-sublabel">Filter / Active States</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-subPage-header pl-subpage-header-demo">
+        <span class="hs-sub">Collection</span>
+        <button class="btn btn-sm btn-outline-light active">All</button>
+        <button class="btn btn-sm btn-outline-light">Pilots</button>
+        <button class="btn btn-sm btn-outline-light">Mechs</button>
+      </div>
+    </div>
+    <span class="pl-cell-label">.btn.active → bg #5b2220 · border #5b2220 · :focus-visible/:active → bg #fff color #000</span>
+
+    <span class="pl-sublabel">Text CTA — Feature Banner</span>
+    <div class="pl-dark-preview-sm">
+      <div class="pl-row">
+        <div class="pl-cell">
+          <span class="hs-feature__cta">Open dossier →</span>
+          <span class="pl-cell-label">.hs-feature__cta · inline text, not a button<br>bg #000 · fw 800 · uppercase · ls .14em</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pl-spec">
+      Primary and secondary actions use <code>&lt;a class="btn"&gt;</code> tags, not <code>&lt;button&gt;</code>. All buttons are designed for <strong>dark backgrounds only</strong>. Chapter nav uses <code>.rounded-pill</code> modifier. <code>.hs-feature__cta</code> is an inline text CTA with black box treatment — used inside <code>.hs-feature__content</code>.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CHIPS & BADGES
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Chips &amp; Badges</h2>
+
+    <span class="pl-sublabel">Role Chips</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-heroRole">
+        <span class="hs-chip">Pilot</span>
+        <span class="hs-chip">Squadron Leader</span>
+        <span class="hs-chip">Mech Class A</span>
+        <span class="hs-chip">Combat Specialist</span>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-chip · pill · bg rgba(15,15,18,.55) · border rgba(255,255,255,.14) · blur(8px) · fw800 · ls .18em · 0.72rem uppercase</span>
+    <div class="pl-spec">
+      Used inside <code>.hs-heroRole</code> beneath hero character names. <code>.hs-heroRole</code> is <code>display:flex; gap:10px; flex-wrap:wrap</code>.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       MODALS & READER
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Modals &amp; Reader</h2>
+
+    <span class="pl-sublabel">Reader Modal (#extraReader, #pageReader)</span>
+    <div class="pl-modal-demo">
+      <div class="pl-modal-header">
+        <div>
+          <span class="hs-kicker pl-modal-kicker">CHAPTER 01</span>
+          <span class="fw-bold ms-3 pl-modal-title">Episode Title</span>
+        </div>
+        <button class="btn btn-sm btn-outline-light pl-modal-close-btn">✕</button>
+      </div>
+      <div class="pl-modal-body">
+        <div class="pl-modal-img-placeholder">PAGE IMAGE</div>
+        <div class="pl-modal-hud">
+          <button class="btn btn-sm btn-outline-light pl-modal-hud-btn">← Prev</button>
+          <span class="pl-modal-pagination">1 / 12</span>
+          <button class="btn btn-sm btn-outline-light pl-modal-hud-btn">Next →</button>
+        </div>
+      </div>
+      <div class="pl-modal-footer">
+        <span class="pl-modal-footer-label">EXTRAS READER</span>
+        <button class="btn btn-sm btn-outline-light pl-modal-footer-btn">Download</button>
+      </div>
+    </div>
+    <span class="pl-cell-label">.modal-content bg rgba(10,10,12,.92) · .modal-header/.footer bg rgba(0,0,0,.35) · z-index 5000</span>
+
+    <span class="pl-sublabel">Reader HUD (.hs-readerHud)</span>
+    <div class="pl-spec">
+      Positioned <code>absolute left/right/bottom: 12px</code>. Background <code>rgba(0,0,0,.45)</code>, border <code>rgba(255,255,255,.10)</code>, border-radius <code>14px</code>, <code>backdrop-filter: blur(10px)</code>, z-index <code>50</code>.<br>
+      Pagination: <code>.hs-readerPagination</code> — fw700 · ls .06em · text-shadow for legibility.<br>
+      Hidden via <code>.hs-readerModal.hs-hideHud</code> toggle (JS).
+    </div>
+
+    <span class="pl-sublabel">Page Frame &amp; Image</span>
+    <div class="pl-spec">
+      <code>.hs-pageFrame</code> — flex center · height <code>calc(100vh - 260px)</code> desktop, <code>calc(100vh - 240px)</code> md+.<br>
+      <code>.hs-pageImg</code> — max-width <code>min(1100px, 72vw)</code> · max-height <code>calc(100vh - 320px)</code> · object-fit contain.<br>
+      <strong>Mobile (&lt;768px):</strong> modal-content height 100vh · modal-body flex:1 · pageImg max-height <code>calc(100vh - 140px)</code>.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       GLASS & SURFACES
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Glass &amp; Surfaces</h2>
+
+    <span class="pl-sublabel">Glass — Header &amp; Footer</span>
+    <div class="pl-dark-preview">
+      <div class="hs-glass pl-glass-demo-inner">
+        <span class="pl-demo-text">Frosted glass surface</span>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-glass · bg rgba(15,15,18,.62) · backdrop-filter blur(12px)</span>
+
+    <span class="pl-sublabel">Panel Shell — Chapter wrapper</span>
+    <div class="pl-dark-preview">
+      <div class="hs-panel-shell pl-panel-shell-demo-inner">
+        <span class="pl-demo-text--layer">Deep shell with diagonal stripe overlay and gradient background.</span>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-panel-shell · gradient #360f0b→#103b7c · blur(10px) · shadow 0 18px 55px rgba(0,0,0,.45)</span>
+
+    <span class="pl-sublabel">Dossier Container</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-dossier pl-dossier-demo-inner">
+        <span class="pl-demo-text--sm">Character data container</span>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-dossier · bg rgba(0,0,0,.50) · border rgba(255,255,255,.20) · padding 18px</span>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FEATURE BANNER
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Feature Banner</h2>
+
+    <span class="pl-sublabel">.hs-feature — full-width linked banner</span>
+    <div class="pl-feature-demo">
+      <div class="hs-feature__overlay"></div>
+      <div class="hs-feature__content">
+        <span class="hs-feature__kicker">Featured Episode</span>
+        <span class="hs-feature__name">Pilot Name</span>
+        <span class="hs-feature__text">Short teaser blurb — max 52ch, opacity .85, line-height 1.6.</span>
+        <span class="hs-feature__cta">Read Now →</span>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-feature · height 420px · border-top/bottom 10px solid #000 · img hover scale(1.08) transition .55s</span>
+
+    <div class="pl-spec">
+      All text children (<code>__kicker</code>, <code>__name</code>, <code>__text</code>, <code>__cta</code>) share <code>background:#000; display:inline; padding:4px 4px 6px 8px</code> for a "cut-out" label effect over the image overlay.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       HERO FRAME
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Hero Frame</h2>
+
+    <span class="pl-sublabel">.hs-heroFrame — character image header</span>
+    <div class="pl-hero-demo">
+      <div class="hs-heroShade"></div>
+      <div class="hs-heroText">
+        <p class="hs-sub d-inline-block mb-1">Squadron Alpha</p>
+        <h2 class="hs-heroName">Pilot Callsign</h2>
+        <div class="hs-heroRole">
+          <span class="hs-chip">Pilot</span>
+          <span class="hs-chip">Squadron Leader</span>
+        </div>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-heroFrame · height 72vh · min-height 520px · img object-position top center scale(1.02)</span>
+
+    <div class="pl-spec">
+      <code>.hs-heroShade</code> — dual gradient overlay: bottom-up <code>rgba(0,0,0,.75)→transparent</code> at 55%, left-right <code>rgba(0,0,0,.55)→transparent</code> at 60%.<br>
+      <code>.hs-heroText</code> — absolute · left/right/bottom: 22px.<br>
+      Profile frames: <code>.hs-profileFrame</code> 240px · <code>.hs-actionFrame</code> 320px · both with <code>border: 3px solid #000</code> on img.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DOSSIER COMPONENT
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Dossier Component</h2>
+
+    <span class="pl-sublabel">Label/value grid for character metadata</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-dossier pl-dossier-demo">
+        <div class="hs-dossier__row">
+          <span class="hs-dossier__label">Callsign</span>
+          <span class="hs-dossier__value">Blaze-7</span>
+        </div>
+        <div class="hs-dossier__row">
+          <span class="hs-dossier__label">Rank</span>
+          <span class="hs-dossier__value">Squadron Leader, First Division</span>
+        </div>
+        <div class="hs-dossier__row">
+          <span class="hs-dossier__label">Mech Class</span>
+          <span class="hs-dossier__value">Class A — Interceptor</span>
+        </div>
+        <div class="hs-dossier__row">
+          <span class="hs-dossier__label">Status</span>
+          <span class="hs-dossier__value">Active</span>
+        </div>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-dossier__row · grid-template-columns 110px 1fr · gap 14px · border-bottom rgba(255,255,255,.08)</span>
+
+    <div class="pl-spec">
+      <code>.hs-dossier__label</code> — 0.75rem · fw800 · ls .22em · opacity .70 &nbsp;|&nbsp; <code>.hs-dossier__value</code> — opacity .92 · lh 1.6
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CHARACTER PANELS
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Character Panels</h2>
+
+    <span class="pl-sublabel">.hs-panel — homepage dossier cards</span>
+    <div class="row g-3">
+      <div class="col-6 col-md-4">
+        <div class="pl-panel-demo">
+          <div class="hs-panel-banner">Pilot Dossier</div>
+          <div class="hs-panel-label">Llew</div>
+        </div>
+        <span class="pl-cell-label">.hs-panel · height 570px · bg #a32a1e</span>
+      </div>
+      <div class="col-12 col-md-8 d-flex align-items-start">
+        <div class="pl-spec pl-spec--full">
+          <code>::before</code> — rainbow gradient border via <code>mask-composite: exclude</code>. Opacity <code>.55→.90</code> on hover.<br>
+          <code>::after</code> — diagonal stripe texture, masked to top 60%.<br>
+          <code>img</code> — <code>filter: grayscale(.9) contrast(1.05)</code> default → <code>filter:none; scale(1.06)</code> on hover. Touch devices: no filter.<br>
+          <code>.hs-panel-banner</code> — absolute top · bg rgba(0,0,0,.85) · fw900 · uppercase · ls .22em · z-index 8.<br>
+          <code>.hs-panel-label</code> — absolute bottom-left 24px · bg #000 · fw900 · ls .20em · z-index 6.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       TILES
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Tiles</h2>
+
+    <span class="pl-sublabel">Page &amp; Extras Tiles</span>
+    <div class="row g-3">
+      <div class="col-6 col-md-3">
+        <button class="hs-pageTile">
+          <div class="pl-tile-img pl-tile-img--dark"></div>
+          <span class="pl-tile-label">Chapter 01</span>
+        </button>
+        <span class="pl-cell-label">.hs-pageTile<br>bg #051937 · border #6b5757</span>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="hs-extraTile hs-tileTreatment">
+          <div class="pl-tile-img pl-tile-img--navy"></div>
+          <span class="pl-tile-extra-label">Extras Item</span>
+        </div>
+        <span class="pl-cell-label">.hs-extraTile<br>.hs-tileTreatment</span>
+      </div>
+    </div>
+    <div class="pl-spec pl-spec--mt">
+      Tile images scale responsively: <code>220px</code> mobile → <code>240px</code> md → <code>260px</code> lg. <code>.hs-tileTreatment</code> shares the same rainbow border + stripe pseudo-element pattern as <code>.hs-panel</code>.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       NAVIGATION & FOOTER
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Navigation &amp; Footer</h2>
+
+    <span class="pl-sublabel">Site Header (.hs-glass)</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-glass pl-nav-demo-inner">
+        <div class="pl-nav-demo-row">
+          <span class="hs-logo pl-text-light">HUE SHIFT</span>
+          <div class="d-flex gap-2">
+            <a href="#" class="btn btn-sm btn-outline-light">Episodes</a>
+            <a href="#" class="btn btn-sm btn-outline-light">Extras</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-glass · position sticky · z-index 4000 · navbar z-index 4100 · dropdowns 4200</span>
+
+    <span class="pl-sublabel">Section Filter (.hs-subPage-header)</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-subPage-header pl-subpage-header-demo">
+        <span class="hs-sub">Collection</span>
+        <button class="btn btn-sm btn-outline-light active">All</button>
+        <button class="btn btn-sm btn-outline-light">Pilots</button>
+        <button class="btn btn-sm btn-outline-light">Mechs</button>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-subPage-header · flex · gap 12px · mobile: wrap/stack · md+: row space-between</span>
+
+    <span class="pl-sublabel">Back to Top</span>
+    <div class="pl-dark-preview-flex">
+      <a href="#" class="hs-backTop pl-backtop-static show">↑</a>
+      <span class="pl-demo-desc">Fixed bottom-right 20px · 44×44px · opacity 0→1 via .show · hover translateY(−4px)</span>
+    </div>
+    <span class="pl-cell-label">.hs-backTop · z-index 1000 · bg rgba(0,0,0,.75) · border rgba(255,255,255,.25)</span>
+
+    <span class="pl-sublabel">Site Footer</span>
+    <div class="pl-dark-preview-sm">
+      <div class="hs-glass pl-footer-demo-inner">
+        <div class="hs-footer-inner">
+          <div class="hs-footer-left">
+            <span class="hs-logo pl-text-light">HUE SHIFT</span>
+            <span class="pl-text-light">·</span>
+            <span class="pl-text-light">© 2024</span>
+          </div>
+          <div class="d-flex gap-2">
+            <a href="#" class="btn btn-sm btn-outline-light">IG</a>
+            <a href="#" class="btn btn-sm btn-outline-light">TT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="pl-cell-label">.hs-footer-inner flex space-between · .hs-footer-left flex gap 12px · .hs-sub transparent bg in footer</span>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       EFFECTS & ANIMATIONS
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Effects &amp; Animations</h2>
+
+    <span class="pl-sublabel">Visual Textures &amp; Transitions</span>
+    <div class="pl-effect-row">
+      <div class="pl-effect-item">
+        <div class="pl-effect-preview pl-effect--glow"></div>
+        <span class="pl-cell-label">hueShiftGlow<br>32s · ease-in-out · 160% size<br>prefers-reduced-motion: none</span>
+      </div>
+      <div class="pl-effect-item">
+        <div class="pl-effect-preview pl-effect--stripe"></div>
+        <span class="pl-cell-label">Diagonal stripe<br>45° · 2px stripe / 12px gap<br>panels, tiles, shell</span>
+      </div>
+      <div class="pl-effect-item">
+        <div class="pl-effect-preview pl-effect--dotgrid"></div>
+        <span class="pl-cell-label">Body dot grid<br>10×10px tile · rgba(26,143,229)<br>body::before · fixed · z-index −1</span>
+      </div>
+      <div class="pl-effect-item">
+        <div class="pl-effect-preview pl-effect--rainbow-wrap">
+          <div class="pl-effect--rainbow-ring"></div>
+        </div>
+        <span class="pl-cell-label">Rainbow border ring<br>mask-composite exclude<br>.hs-panel · .hs-tileTreatment</span>
+      </div>
+    </div>
+
+    <div class="pl-spec pl-spec--mt">
+      <strong>Panel hover:</strong> <code>filter: grayscale(.9)→none</code> + <code>scale(1.06)</code> · transition <code>.45s/.35s ease</code>.<br>
+      <strong>Feature hover:</strong> <code>scale(1.08)</code> · transition <code>.55s ease</code>.<br>
+      <strong>Rainbow border:</strong> opacity <code>.55→.90</code> on hover · transition <code>.35s ease</code>.<br>
+      <strong>Touch devices</strong> <code>(@media hover:none pointer:coarse)</code>: panel filter always <code>none</code>.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SPACING & Z-INDEX
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Spacing &amp; Z-Index</h2>
+
+    <span class="pl-sublabel">Z-Index Stack</span>
+    <table class="pl-z-table">
+      <tr><td class="pl-z-val">−1</td><td>Body dot-grid overlay (fixed, body::before)</td></tr>
+      <tr><td class="pl-z-val">0–4</td><td>Panel pseudo-element layers (stripe, content)</td></tr>
+      <tr><td class="pl-z-val">5–8</td><td>Panel rainbow border · banner · label</td></tr>
+      <tr><td class="pl-z-val">50</td><td>Reader HUD (.hs-readerHud)</td></tr>
+      <tr><td class="pl-z-val">1000</td><td>Back to top (.hs-backTop, fixed)</td></tr>
+      <tr><td class="pl-z-val">4000</td><td>Site header (header.hs-glass)</td></tr>
+      <tr><td class="pl-z-val">4100</td><td>Navbar within header</td></tr>
+      <tr><td class="pl-z-val">4200</td><td>Dropdown menus</td></tr>
+      <tr><td class="pl-z-val">4900</td><td>Modal backdrop</td></tr>
+      <tr><td class="pl-z-val">5000</td><td>Modals (.modal)</td></tr>
+    </table>
+
+    <span class="pl-sublabel">Responsive Breakpoints</span>
+    <div class="pl-bp-row">
+      <div class="pl-bp-chip"><strong>Mobile</strong>max-width 600px<br>Logo 60px · Tiles 220px</div>
+      <div class="pl-bp-chip"><strong>Tablet (md)</strong>min-width 768px<br>Tiles 240px · SubPage row</div>
+      <div class="pl-bp-chip"><strong>Desktop (lg)</strong>min-width 992px<br>Tiles 260px · CoverWrap 360px</div>
+      <div class="pl-bp-chip"><strong>XL</strong>min-width 1200px<br>Bootstrap container max-width</div>
+    </div>
+
+    <span class="pl-sublabel">Key Spacing Values</span>
+    <div class="pl-spec">
+      Feature border: <code>10px</code> · Rainbow border padding ring: <code>10px</code> · SubPage gap: <code>12px</code> · Footer-left gap: <code>12px</code> · Dossier col gap: <code>14px</code> · Dossier padding: <code>18px</code> · HeroText inset: <code>22px</code> · Panel label offset: <code>24px</code> · Logo desktop: <code>80px</code> · Logo mobile: <code>60px</code>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       DEPENDENCIES
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Dependencies &amp; Conventions</h2>
+
+    <span class="pl-sublabel">Libraries</span>
+    <div class="pl-spec">
+      <strong>Bootstrap 5.3.3</strong> (CDN) — grid, utilities, navbar, modal, buttons. Custom property overrides in <code>global.css</code>.<br>
+      <strong>Swiper 11</strong> (CDN) — chapter cover carousels, image reader. <code>--swiper-theme-color: rgba(255,255,255,.9)</code>. Custom nav via <code>.hs-nav</code> (40×40px, border-radius 14px) and <code>.hs-caret--left/right</code>.
+    </div>
+
+    <span class="pl-sublabel">Class Naming (.hs- prefix)</span>
+    <div class="pl-spec">
+      <strong>Block</strong> &nbsp;<code>.hs-panel</code> · <code>.hs-feature</code> · <code>.hs-dossier</code> · <code>.hs-hero</code><br>
+      <strong>Element</strong> &nbsp;<code>.hs-panel-label</code> · <code>.hs-feature__name</code> · <code>.hs-dossier__row</code><br>
+      <strong>Modifier</strong> &nbsp;<code>.hs-caret--left</code> · <code>.hs-caret--right</code><br>
+      Bootstrap utilities used freely alongside: <code>.d-flex</code> · <code>.gap-3</code> · <code>.fw-bold</code> · <code>.col-md-4</code>
+    </div>
+  </div>
+
+</div><!-- /pl-shell -->
+
+</body>
+</html>
