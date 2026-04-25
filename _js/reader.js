@@ -132,6 +132,7 @@
 
     const nextBtn = modalEl.querySelector(".hs-readerNext");
     const prevBtn = modalEl.querySelector(".hs-readerPrev");
+    const zoomBtn = modalEl.querySelector(".hs-readerZoom");
     const pagEl = modalEl.querySelector(".hs-readerPagination");
     const hudEl = modalEl.querySelector(".hs-readerHud");
 
@@ -139,6 +140,14 @@
       if (!hudEl) return;
       const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
       hudEl.style.display = active ? "none" : "";
+    };
+
+    const toggleZoom = () => {
+      modalEl.classList.toggle("hs-readerZoomed");
+    };
+
+    const resetZoom = () => {
+      modalEl.classList.remove("hs-readerZoomed");
     };
 
     let swiper = null;
@@ -165,6 +174,7 @@
       });
 
       swiper.on("slideChange", () => {
+        resetZoom();
         stopYouTubeIframes(wrapper);
         const active = wrapper.querySelector(".swiper-slide-active iframe[data-yt='1']");
         if (active) {
@@ -282,10 +292,15 @@
 
     modalEl.addEventListener("hidden.bs.modal", () => {
       stopYouTubeIframes(wrapper);
+      resetZoom();
       if (!swiper) return;
       swiper.slideTo(0, 0);
       updateHudVisibility();
     });
+
+    if (zoomBtn) {
+      zoomBtn.addEventListener("click", toggleZoom);
+    }
   };
 
   const isYouTubeTile = (el) =>
