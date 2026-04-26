@@ -108,3 +108,17 @@
     opacity:.7;
   }
 }
+
+body.no-panel-hover .hs-panel:hover img,
+body.no-panel-hover .hs-panel:focus-visible img {
+  transform: none !important;
+}
+
+body.no-panel-hover .hs-panel:hover::before,
+body.no-panel-hover .hs-panel:focus-visible::before {
+  opacity: .55 !important;
+}
+
+.chapter-subtitle {
+  color: #92daef;
+}
