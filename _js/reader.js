@@ -163,6 +163,7 @@
         slidesPerView: 1,
         spaceBetween: 16,
         centeredSlides: true,
+        initialSlide: pendingIndex,
         keyboard: { enabled: true },
         a11y: { enabled: true },
         pagination: {
@@ -209,6 +210,12 @@
         slide.innerHTML = buildSlideHtml(btn, label);
         wrapper.appendChild(slide);
       });
+
+      // Destroy and recreate Swiper to apply new slides and initialSlide
+      if (swiper) {
+        swiper.destroy(true, true);
+        swiper = null;
+      }
     };
 
     const rebindNav = (s) => {
@@ -226,9 +233,6 @@
     const openFromTrigger = (trigger) => {
       const allTiles = getTiles();
       if (!allTiles.length) return;
-
-      const s = ensureSwiper();
-      if (!s) return;
 
       let key = "__all__";
       let tilesForModal = [];
@@ -249,6 +253,9 @@
         rebuildSlides(tilesForModal);
         currentKey = key;
       }
+
+      const s = ensureSwiper();
+      if (!s) return;
 
       if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
         bootstrap.Modal.getOrCreateInstance(modalEl).show();
