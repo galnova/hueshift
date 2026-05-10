@@ -257,6 +257,8 @@
       const s = ensureSwiper();
       if (!s) return;
 
+      s.slideTo(pendingIndex, 0);
+
       if (typeof bootstrap !== "undefined" && bootstrap.Modal) {
         bootstrap.Modal.getOrCreateInstance(modalEl).show();
       }
