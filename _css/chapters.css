@@ -109,9 +109,14 @@
   }
 }
 
+body.no-panel-hover .hs-panel img {
+  filter: none;
+}
+
 body.no-panel-hover .hs-panel:hover img,
 body.no-panel-hover .hs-panel:focus-visible img {
   transform: none !important;
+  filter: grayscale(.9) contrast(1.05) brightness(.95);
 }
 
 body.no-panel-hover .hs-panel:hover::before,
