@@ -205,17 +205,23 @@ footer .hs-sub{background-color:transparent}
   outline:0;
   box-shadow:none;
   background:transparent;
+  cursor:zoom-in;
   transition:max-width 0.3s ease, max-height 0.3s ease;
 }
 
 :is(#extraReader,#pageReader).hs-readerZoomed .hs-pageImg{
-  max-width:min(1800px, 98vw);
-  max-height:calc(100vh - 180px);
+  cursor:grab;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+:is(#extraReader,#pageReader).hs-readerZoomed .hs-pageImg:active{
+  cursor:grabbing;
 }
 
 :is(#extraReader,#pageReader).hs-readerZoomed .hs-pageFrame{
-  overflow:auto;
-  -webkit-overflow-scrolling:touch;
+  overflow:hidden;
+  cursor:grab;
 }
 
 :is(#extraReader,#pageReader) .hs-readerZoom{
@@ -283,7 +289,7 @@ footer .hs-sub{background-color:transparent}
   }
 
   :is(#extraReader, #pageReader).hs-readerZoomed .hs-pageImg{
-    max-height:calc(100vh - 160px);
+    cursor:grab;
   }
 }
 
