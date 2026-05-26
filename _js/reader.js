@@ -142,12 +142,60 @@
       hudEl.style.display = active ? "none" : "";
     };
 
-    const toggleZoom = () => {
-      modalEl.classList.toggle("hs-readerZoomed");
+    const ZOOM_SCALE = 2.5;
+    const zoomInSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>';
+    const zoomOutSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path><line x1="8" y1="11" x2="14" y2="11"></line></svg>';
+
+    let isZoomed = false;
+    let panX = 0, panY = 0;
+    let maxPanX = 0, maxPanY = 0;
+    let isPanning = false;
+    let panStartX = 0, panStartY = 0;
+    let panOriginX = 0, panOriginY = 0;
+
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+    const getActiveImg = () => modalEl.querySelector(".swiper-slide-active .hs-pageImg");
+
+    const applyTransform = () => {
+      const img = getActiveImg();
+      if (img) img.style.transform = `scale(${ZOOM_SCALE}) translate(${panX}px, ${panY}px)`;
+    };
+
+    const updateZoomBtn = (zoomed) => {
+      if (!zoomBtn) return;
+      zoomBtn.innerHTML = zoomed ? zoomOutSvg : zoomInSvg;
+      zoomBtn.setAttribute("aria-label", zoomed ? "Reset zoom" : "Zoom page");
+      zoomBtn.setAttribute("title", zoomed ? "Reset zoom" : "Zoom");
     };
 
     const resetZoom = () => {
+      if (!isZoomed) return;
+      isZoomed = false;
+      panX = 0; panY = 0;
       modalEl.classList.remove("hs-readerZoomed");
+      updateZoomBtn(false);
+      if (swiper) swiper.allowTouchMove = true;
+      wrapper.querySelectorAll(".hs-pageImg").forEach(img => { img.style.transform = ""; });
+    };
+
+    const toggleZoom = () => {
+      if (isZoomed) { resetZoom(); return; }
+      isZoomed = true;
+      panX = 0; panY = 0;
+      modalEl.classList.add("hs-readerZoomed");
+      updateZoomBtn(true);
+      if (swiper) swiper.allowTouchMove = false;
+      const img = getActiveImg();
+      if (img) {
+        const frame = img.closest(".hs-pageFrame");
+        if (frame) {
+          const fr = frame.getBoundingClientRect();
+          const ir = img.getBoundingClientRect();
+          maxPanX = Math.max(0, (ir.width  * (ZOOM_SCALE - 1)) / 2 / ZOOM_SCALE);
+          maxPanY = Math.max(0, (ir.height * (ZOOM_SCALE - 1)) / 2 / ZOOM_SCALE);
+        }
+        applyTransform();
+      }
     };
 
     let swiper = null;
@@ -310,6 +358,55 @@
     if (zoomBtn) {
       zoomBtn.addEventListener("click", toggleZoom);
     }
+
+    swiperEl.addEventListener("dblclick", (e) => {
+      if (e.target.closest(".hs-pageImg")) toggleZoom();
+    });
+
+    modalEl.addEventListener("keydown", (e) => {
+      if ((e.key === "z" || e.key === "Z") && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        toggleZoom();
+      }
+    });
+
+    // Mouse drag to pan
+    swiperEl.addEventListener("mousedown", (e) => {
+      if (!isZoomed) return;
+      isPanning = true;
+      panStartX = e.clientX; panStartY = e.clientY;
+      panOriginX = panX;     panOriginY = panY;
+      e.preventDefault();
+    });
+
+    modalEl.addEventListener("mousemove", (e) => {
+      if (!isPanning) return;
+      panX = clamp(panOriginX + (e.clientX - panStartX) / ZOOM_SCALE, -maxPanX, maxPanX);
+      panY = clamp(panOriginY + (e.clientY - panStartY) / ZOOM_SCALE, -maxPanY, maxPanY);
+      applyTransform();
+    });
+
+    const stopPan = () => { isPanning = false; };
+    modalEl.addEventListener("mouseup", stopPan);
+    modalEl.addEventListener("mouseleave", stopPan);
+
+    // Touch drag to pan
+    swiperEl.addEventListener("touchstart", (e) => {
+      if (!isZoomed || e.touches.length !== 1) return;
+      isPanning = true;
+      panStartX = e.touches[0].clientX; panStartY = e.touches[0].clientY;
+      panOriginX = panX;                panOriginY = panY;
+      e.stopPropagation();
+    }, { passive: true });
+
+    swiperEl.addEventListener("touchmove", (e) => {
+      if (!isPanning || !isZoomed || e.touches.length !== 1) return;
+      panX = clamp(panOriginX + (e.touches[0].clientX - panStartX) / ZOOM_SCALE, -maxPanX, maxPanX);
+      panY = clamp(panOriginY + (e.touches[0].clientY - panStartY) / ZOOM_SCALE, -maxPanY, maxPanY);
+      applyTransform();
+      e.preventDefault();
+    }, { passive: false });
+
+    swiperEl.addEventListener("touchend", () => { isPanning = false; });
   };
 
   const isYouTubeTile = (el) =>
