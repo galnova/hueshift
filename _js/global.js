@@ -127,7 +127,6 @@
   const item = FEATURED_ITEMS[chosenIndex];
 
   // Apply to DOM
-  featuredWrap.href = item.href;
   featuredWrap.setAttribute("aria-label", item.aria);
 
   if (featuredImg) {
@@ -137,5 +136,8 @@
 
   if (featuredName) featuredName.textContent = item.name;
   if (featuredText) featuredText.textContent = item.text;
-  if (featuredCta) featuredCta.textContent = item.cta;
+  if (featuredCta) {
+    featuredCta.href = item.href;
+    featuredCta.textContent = item.cta;
+  }
 })();
