@@ -133,3 +133,13 @@ body.no-panel-hover .hs-panel:focus-visible::before {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
+.hs-cardCtas .btn{
+  width:100%;
+}
+
+@media (min-width:768px) and (max-width:991.98px){
+  .hs-cardCtas .btn{
+    width:calc(50% - 0.25rem);
+  }
+}

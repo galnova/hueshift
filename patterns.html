@@ -344,23 +344,14 @@ Absolute top of .hs-panel</span>
       </div>
     </div>
 
-    <span class="pl-sublabel">Chapter Jump Buttons</span>
+    <span class="pl-sublabel">Card CTAs - Responsive Width (.hs-cardCtas)</span>
     <div class="pl-dark-preview-sm">
-      <div class="pl-row">
-        <div class="pl-cell">
-          <button class="btn btn-sm btn-outline-light rounded-pill">Ch 1</button>
-          <span class="pl-cell-label">.btn-sm.btn-outline-light<br>.rounded-pill · chapter nav</span>
-        </div>
-        <div class="pl-cell">
-          <button class="btn btn-sm btn-outline-light rounded-pill">Ch 2</button>
-          <span class="pl-cell-label">.hs-jump · data-hs-jump="n"<br>panel-shell header row</span>
-        </div>
-        <div class="pl-cell">
-          <a href="#" class="btn btn-outline-light btn-sm">YouTube Shorts</a>
-          <span class="pl-cell-label">.btn-outline-light.btn-sm<br>External link in panel header</span>
-        </div>
+      <div class="hs-cardCtas d-flex flex-wrap gap-2">
+        <a href="#" class="btn btn-secondary">Read Chapter One</a>
+        <a href="#" class="btn btn-outline-light">Buy Chapter One</a>
       </div>
     </div>
+    <span class="pl-cell-label">.hs-cardCtas .btn · width 100% on mobile &amp; desktop (lg+) · width calc(50% - .25rem) on tablet (768-991px) · used in all-chapters.html cards, which are 2-up at that breakpoint</span>
 
     <span class="pl-sublabel">Filter / Active States</span>
     <div class="pl-dark-preview-sm">
@@ -505,6 +496,36 @@ Absolute top of .hs-panel</span>
 
     <div class="pl-spec">
       All text children (<code>__kicker</code>, <code>__name</code>, <code>__text</code>, <code>__cta</code>) share <code>background:#000; display:inline; padding:4px 4px 6px 8px</code> for a "cut-out" label effect over the image overlay.
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       PROMO BANNER
+  ══════════════════════════════════════ -->
+  <div class="pl-section">
+    <h2 class="pl-section-title">Promo Banner</h2>
+
+    <span class="pl-sublabel">.hs-promoBanner - full-width linked CTA banner</span>
+    <div class="pl-dark-preview">
+      <a href="#" class="hs-promoBanner">
+        <div class="hs-promoBanner-body">
+          <span class="hs-promoBanner-kicker">Digital Copy Available</span>
+          <span class="hs-promoBanner-title">Hue Shift — Chapter One: Atrocities</span>
+          <span class="hs-promoBanner-sub">Own the full chapter and support the series on Patreon.</span>
+        </div>
+        <span class="hs-promoBanner-cta">Get it on Patreon →</span>
+      </a>
+    </div>
+    <span class="pl-cell-label">.hs-promoBanner · gradient #1a0f3b→#0f2a5c→#1a0f3b · border rgba(255,255,255,.14) · rainbow gradient ring via ::before (mask-composite exclude, 8s shift loop)</span>
+
+    <div class="pl-spec">
+      <code>.hs-promoBanner-kicker</code> - .72rem · uppercase · fw800 · ls .28em · color #ffcd29.<br>
+      <code>.hs-promoBanner-title</code> - clamp(1.1rem, 2.4vw, 1.5rem) · fw900.<br>
+      <code>.hs-promoBanner-sub</code> - .85rem · opacity .75.<br>
+      <code>.hs-promoBanner-cta</code> - pill CTA · bg #ffcd29 → #fff on hover · fw800 · uppercase · ls .08em.<br>
+      Hover/focus: border brightens to <code>rgba(255,205,41,.55)</code> and shadow deepens - no position shift.<br>
+      <strong>Mobile (&lt;576px):</strong> stacks to a column and the CTA becomes full width.<br>
+      Used on <code>index.html</code>, <code>_chapters/c-1.html</code>, and <code>_chapters/c-2.html</code> to promote (or cross-promote) the Chapter One digital copy on Patreon.
     </div>
   </div>
 
