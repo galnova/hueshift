@@ -743,6 +743,115 @@ footer .hs-sub{background-color:transparent}
 
 .hs-backTop:hover{transform:translateY(-4px)}
 
+.hs-promoBanner{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:20px 24px;
+  border-radius:16px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#1a0f3b 0%,#0f2a5c 50%,#1a0f3b 100%);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 18px 45px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);
+  text-decoration:none;
+  color:#f2f2f2;
+  transition:box-shadow .25s ease,border-color .25s ease;
+}
+
+.hs-promoBanner:hover,
+.hs-promoBanner:focus-visible{
+  border-color:rgba(255,205,41,.55);
+  box-shadow:0 22px 55px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08);
+  color:#f2f2f2;
+}
+
+.hs-promoBanner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  padding:1px;
+  background:linear-gradient(120deg,rgba(255,205,41,.9),rgba(255,30,70,.7),rgba(0,200,255,.7),rgba(160,60,255,.7));
+  background-size:300% 300%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.55;
+  animation:hs-promoShift 8s ease infinite;
+  pointer-events:none;
+}
+
+@keyframes hs-promoShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hs-promoBanner::before{animation:none}
+}
+
+.hs-promoBanner-body{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.hs-promoBanner-kicker{
+  font-size:.72rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-weight:800;
+  color:#ffcd29;
+  opacity:.9;
+}
+
+.hs-promoBanner-title{
+  font-size:clamp(1.1rem,2.4vw,1.5rem);
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.hs-promoBanner-sub{
+  font-size:.85rem;
+  opacity:.75;
+}
+
+.hs-promoBanner-cta{
+  position:relative;
+  z-index:1;
+  flex:0 0 auto;
+  white-space:nowrap;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:.8rem;
+  padding:10px 18px;
+  border-radius:999px;
+  background:#ffcd29;
+  color:#1a0f3b;
+  transition:background-color .2s ease;
+}
+
+.hs-promoBanner:hover .hs-promoBanner-cta{
+  background:#fff;
+}
+
+@media(max-width:576px){
+  .hs-promoBanner{
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+  }
+  .hs-promoBanner-cta{
+    width:100%;
+    text-align:center;
+  }
+}
+
 .btn-primary{
   --bs-btn-bg:#0f0c3b;
   --bs-btn-border-color:#fff;
