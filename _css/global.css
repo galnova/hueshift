@@ -657,6 +657,55 @@ footer .hs-sub{background-color:transparent}
   }
 }
 
+.hs-tabBar{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-start;
+  gap:4px;
+  margin-bottom:-1px;
+  position:relative;
+  z-index:1;
+}
+
+.hs-tabBar-btn{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  border:1px solid rgba(255,255,255,.14);
+  background:#051937;
+  color:#f2f2f2;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:.9rem;
+  padding:16px 28px;
+  border-radius:16px;
+  margin-bottom:12px;
+  cursor:pointer;
+  transition:background-color .2s ease,border-color .2s ease;
+}
+
+.hs-tabBar-btn:hover{
+  background:#0a2a55;
+}
+
+.hs-tabBar-btn:focus-visible{
+  outline:3px solid #ffcd29;
+  outline-offset:2px;
+}
+
+.hs-tabBar-btn.active{
+  background:#2a0c09;
+  border-color:rgba(255,255,255,.35);
+}
+
+@media(max-width:575.98px){
+  .hs-tabBar-btn{
+    padding:12px 18px;
+    font-size:.8rem;
+  }
+}
+
 .hs-profileFrame,
 .hs-actionFrame{
   border:1px solid rgba(255,255,255,.10);
