@@ -80,82 +80,82 @@
 /* Cidermayer: layout offsets are unique to this cut of the art; motion
    direction/amplitude is mirrored left/right via the custom properties. */
 
-.mech-cidermayer {
+.cider-mech {
   --glow-in: rgba(146, 218, 239, .35);
   --glow-out: rgba(26, 92, 191, .16);
 }
 
-.mech-cidermayer .mech-part-l-leg-2 {
+.cider-mech .mech-part-l-leg-2 {
   left: 29.9415%; top: 34.2746%; width: 19.3567%; height: 26.7770%; z-index: 1;
   transform-origin: 96% 6%;
   animation: mech-sway 5.2s var(--mech-ease) infinite .2s;
   --sway-y: -.4%; --sway-rot: .7deg;
 }
 
-.mech-cidermayer .mech-part-r-leg-2 {
+.cider-mech .mech-part-r-leg-2 {
   left: 50%; top: 34.6154%; width: 19.0643%; height: 26.2902%; z-index: 2;
   transform-origin: 4% 6%;
   animation: mech-sway 5.2s var(--mech-ease) infinite .2s;
   --sway-y: -.4%; --sway-rot: -.7deg;
 }
 
-.mech-cidermayer .mech-part-l-arm-2 {
+.cider-mech .mech-part-l-arm-2 {
   left: 55.2047%; top: 2.5316%; width: 29.7076%; height: 36.8549%; z-index: 3;
   transform-origin: 6% 18%;
   animation: mech-sway 4.8s var(--mech-ease) infinite .1s;
   --sway-y: -.5%; --sway-rot: -.9deg;
 }
 
-.mech-cidermayer .mech-part-r-arm-2 {
+.cider-mech .mech-part-r-arm-2 {
   left: 14.7953%; top: 2.5316%; width: 29.0643%; height: 37.4878%; z-index: 4;
   transform-origin: 94% 18%;
   animation: mech-sway 4.8s var(--mech-ease) infinite .1s;
   --sway-y: -.5%; --sway-rot: .9deg;
 }
 
-.mech-cidermayer .mech-part-waist {
+.cider-mech .mech-part-waist {
   left: 36.8421%; top: 27.702%; width: 26.3743%; height: 18.3057%; z-index: 5;
   transform-origin: 50% 0%;
   animation: mech-breathe 4.2s ease-in-out infinite .18s;
   --breathe-y: .4%; --breathe-scale: .98;
 }
 
-.mech-cidermayer .mech-part-l-leg-1 {
+.cider-mech .mech-part-l-leg-1 {
   left: 12.3392%; top: 53.0185%; width: 36.5497%; height: 44.6446%; z-index: 6;
   transform-origin: 88% 4%;
   animation: mech-sway 4.4s var(--mech-ease) infinite .55s;
   --sway-y: .5%; --sway-rot: .9deg;
 }
 
-.mech-cidermayer .mech-part-r-leg-1 {
+.cider-mech .mech-part-r-leg-1 {
   left: 50.4678%; top: 53.4567%; width: 36.4912%; height: 44.2551%; z-index: 7;
   transform-origin: 12% 4%;
   animation: mech-sway 4.4s var(--mech-ease) infinite .55s;
   --sway-y: .5%; --sway-rot: -.9deg;
 }
 
-.mech-cidermayer .mech-part-l-arm-1 {
+.cider-mech .mech-part-l-arm-1 {
   left: 66.4912%; top: 28.3836%; width: 30.0585%; height: 28.7244%; z-index: 8;
   transform-origin: 16% 5%;
   animation: mech-sway 3.9s var(--mech-ease) infinite .5s;
   --sway-y: .6%; --sway-rot: -1.1deg;
 }
 
-.mech-cidermayer .mech-part-r-arm-1 {
+.cider-mech .mech-part-r-arm-1 {
   left: 2.9825%; top: 28.1402%; width: 30.4094%; height: 28.7244%; z-index: 9;
   transform-origin: 84% 5%;
   animation: mech-sway 3.9s var(--mech-ease) infinite .5s;
   --sway-y: .6%; --sway-rot: 1.1deg;
 }
 
-.mech-cidermayer .mech-part-chest {
+.cider-mech .mech-part-chest {
   left: 30.2924%; top: 6.9133%; width: 40.4678%; height: 22.3953%; z-index: 10;
   transform-origin: 50% 100%;
   animation: mech-breathe 4.2s ease-in-out infinite;
   --breathe-y: -.8%; --breathe-scale: 1.028;
 }
 
-.mech-cidermayer .mech-part-head {
+.cider-mech .mech-part-head {
   left: 39.9415%; top: .6816%; width: 20.117%; height: 13.5833%; z-index: 11;
   transform-origin: 50% 100%;
   animation: mech-sway 5.6s var(--mech-ease) infinite .35s;
