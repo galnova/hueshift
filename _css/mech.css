@@ -1,14 +1,41 @@
+.mech-intro {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.mech-intro .mech-page-title {
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  line-height: 1.15;
+}
+
+.mech-intro .hs-subtitle {
+  margin-top: .25rem;
+  padding: 4px 5px;
+  font-size: .7rem;
+}
+
+.mech-intro .hs-blurb {
+  font-size: .85rem;
+}
+
+@media (min-width: 768px) {
+  .mech-intro {
+    padding-top: .65rem;
+    padding-bottom: .65rem;
+  }
+}
+
 .mech-section {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem 4rem;
+  padding: 1rem 1rem 2.5rem;
 }
 
 .mech-stage {
   position: relative;
-  width: min(78vw, 560px);
+  width: min(92vw, 780px);
   aspect-ratio: 1710 / 2054;
   margin: 0 auto;
 }
@@ -48,6 +75,98 @@
   padding: 0 1rem;
   text-align: center;
   box-sizing: border-box;
+}
+
+.mech-name {
+  margin: 0;
+  margin-inline: auto;
+  font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* Carousel: full-bleed track of mech-section slides, one visible at a time. */
+
+.mech-carousel-wrap {
+  width: 100%;
+}
+
+.mech-carousel {
+  position: relative;
+  width: 100%;
+}
+
+.mech-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.mech-carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform .5s cubic-bezier(.65, 0, .35, 1);
+}
+
+.mech-carousel-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mech-carousel-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(5, 25, 55, .78);
+  color: #f2f2f2;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transform: translateY(-50%);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.mech-carousel-btn:hover {
+  background: #0a2a55;
+}
+
+.mech-carousel-btn:focus-visible {
+  outline: 3px solid #ffcd29;
+  outline-offset: 2px;
+}
+
+.mech-carousel-btn[hidden] {
+  display: none;
+}
+
+.mech-carousel-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.mech-carousel-prev { left: 1rem; }
+.mech-carousel-next { right: 1rem; }
+
+@media (max-width: 575.98px) {
+  .mech-carousel-btn { width: 40px; height: 40px; }
+  .mech-carousel-btn svg { width: 18px; height: 18px; }
+  .mech-carousel-prev { left: .5rem; }
+  .mech-carousel-next { right: .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mech-carousel-track {
+    transition: none;
+  }
 }
 
 /* Shared motion. Parts opt into one of these via animation-name and set
