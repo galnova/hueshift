@@ -35,6 +35,9 @@
 .mech-panel--cider { --mech-accent-rgb: 61, 123, 245; }
 .mech-panel--coldshoulder { --mech-accent-rgb: 34, 217, 242; }
 .mech-panel--linwood { --mech-accent-rgb: 224, 151, 63; }
+.mech-panel--gigatear { --mech-accent-rgb: 214, 48, 58; }
+.mech-panel--lasereater { --mech-accent-rgb: 45, 189, 155; }
+.mech-panel--sydney { --mech-accent-rgb: 132, 94, 224; }
 
 .mech-panel-bg {
   position: absolute;
@@ -72,9 +75,12 @@
   transform: scale(1.2);
 }
 
-.mech-panel--cider .mech-panel-bg::after { background-image: url("../_img/_mechs/cider-full.png"); }
-.mech-panel--coldshoulder .mech-panel-bg::after { background-image: url("../_img/_mechs/coldshoulder-full.png"); }
-.mech-panel--linwood .mech-panel-bg::after { background-image: url("../_img/_mechs/linwood-full.png"); }
+.mech-panel--cider .mech-panel-bg::after { background-image: url("../_img/_mechs/cidermayer-s-full.png"); }
+.mech-panel--coldshoulder .mech-panel-bg::after { background-image: url("../_img/_mechs/coldshoulder-e-full.png"); }
+.mech-panel--linwood .mech-panel-bg::after { background-image: url("../_img/_mechs/linwood-s-full.png"); }
+.mech-panel--gigatear .mech-panel-bg::after { background-image: url("../_img/_mechs/gigatear-f-full.png"); }
+.mech-panel--lasereater .mech-panel-bg::after { background-image: url("../_img/_mechs/lasereater-a-full.png"); }
+.mech-panel--sydney .mech-panel-bg::after { background-image: url("../_img/_mechs/sydney-s-full.png"); }
 
 .mech-panel-inner {
   position: relative;
