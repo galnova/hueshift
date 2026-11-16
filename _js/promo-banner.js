@@ -15,11 +15,13 @@
       sub: "Own the full chapter and support the series.",
       links: [
         {
+          store: "print",
           label: "Printed Book",
           href: "https://svc.lulu.com/?items=b6ca61cd-b8cd-4258-b7b1-eba754d1d917",
           ariaLabel: "Buy the Hue Shift Chapter One: Atrocities print copy on Lulu",
         },
         {
+          store: "digital",
           label: "Digital Book",
           href: "https://www.patreon.com/greyvoth/posts/hue-shift-one-26-162609979?source=storefront",
           ariaLabel: "Get the Hue Shift Chapter One: Atrocities digital copy on Patreon",
@@ -64,5 +66,17 @@
     const books = ids.length ? BOOKS.filter((b) => ids.includes(b.id)) : BOOKS;
     el.classList.add("d-grid", "gap-3");
     el.innerHTML = books.map(renderBook).join("");
+  });
+
+  // Standalone buy links anywhere on the site pull their URL from BOOKS:
+  //   <a data-book-link="ch1 print">Buy Print</a>   (book id + link `store`)
+  document.querySelectorAll("a[data-book-link]").forEach((a) => {
+    const [id, store] = a.dataset.bookLink.trim().split(/\s+/);
+    const link = BOOKS.find((b) => b.id === id)?.links.find((l) => l.store === store);
+    if (!link) return;
+    a.href = link.href;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    if (link.ariaLabel && !a.hasAttribute("aria-label")) a.setAttribute("aria-label", link.ariaLabel);
   });
 })();
