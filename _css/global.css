@@ -837,8 +837,44 @@ footer .hs-sub{background-color:transparent}
   100%{background-position:0% 50%}
 }
 
+/* Laser trace — a bright beam that runs around the border */
+@property --hs-laser-angle{
+  syntax:"<angle>";
+  initial-value:0deg;
+  inherits:false;
+}
+
+.hs-promoBanner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  padding:2px;
+  border-radius:inherit;
+  background:conic-gradient(
+    from var(--hs-laser-angle),
+    transparent 0deg,
+    transparent 290deg,
+    rgba(255,205,41,.15) 310deg,
+    rgba(255,205,41,.9) 345deg,
+    #fff 358deg,
+    transparent 360deg
+  );
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  filter:drop-shadow(0 0 4px rgba(255,205,41,.9)) drop-shadow(0 0 10px rgba(255,205,41,.5));
+  animation:hs-laserTrace var(--hs-laser-speed,4s) linear infinite; /* set --hs-laser-speed to tune */
+  pointer-events:none;
+  z-index:0;
+}
+
+@keyframes hs-laserTrace{
+  to{--hs-laser-angle:360deg}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hs-promoBanner::before{animation:none}
+  .hs-promoBanner::after{display:none}
 }
 
 .hs-promoBanner-body{
@@ -906,7 +942,7 @@ div.hs-promoBanner:focus-within{
   flex-wrap:wrap;
   align-items:center;
   justify-content:flex-end;
-  gap:10px;
+  gap:16px;
 }
 
 a.hs-promoBanner-cta{
@@ -940,6 +976,7 @@ a.hs-promoBanner-cta--secondary:focus-visible{
   .hs-promoBanner-actions{
     width:100%;
     flex-direction:column;
+    gap:12px;
   }
 }
 

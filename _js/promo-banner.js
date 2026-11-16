@@ -15,12 +15,12 @@
       sub: "Own the full chapter and support the series.",
       links: [
         {
-          label: "Get the Print Copy",
+          label: "Printed Book",
           href: "https://svc.lulu.com/?items=b6ca61cd-b8cd-4258-b7b1-eba754d1d917",
           ariaLabel: "Buy the Hue Shift Chapter One: Atrocities print copy on Lulu",
         },
         {
-          label: "Digital on Patreon",
+          label: "Digital Book",
           href: "https://www.patreon.com/greyvoth/posts/hue-shift-one-26-162609979?source=storefront",
           ariaLabel: "Get the Hue Shift Chapter One: Atrocities digital copy on Patreon",
         },
